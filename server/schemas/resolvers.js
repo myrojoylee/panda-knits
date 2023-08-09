@@ -1,16 +1,15 @@
-const { AuthenticationError } = require("apollo-server-express");
 const { User } = require("../models");
-const { signToken } = require("../utils/auth");
+const { signToken, AuthenticationError } = require("../utils/auth");
 
 const resolvers = {
   Query: {
     users: async () => {
       return User.find();
     },
-    user: async (parent, { username }) => {
-      return User.findOne({ username });
+    user: async (parent, { userId }) => {
+      return User.findOne({ _id: userId });
     },
-    myAccount: async (parent, context) => {
+    me: async (parent, context) => {
       if (context.user) {
         return User.findOne({ _id: context.user._id });
       }
@@ -31,7 +30,7 @@ const resolvers = {
         throw new AuthenticationError("No user found with this email address.");
       }
 
-      const correctPw = await user.isCorrrectPassword(password);
+      const correctPw = await user.isCorrectPassword(password);
 
       if (!correctPw) {
         throw new AuthenticationError("Incorrect credentials");
