@@ -34,9 +34,18 @@ const Profile = () => {
   return (
     <div>
       <div className="flex-row justify-center mb-3">
-        <h2 className="col-12 col-md-10 bg-dark text-light p-3 mb-5">
-          Viewing {userId ? `${user.username}'s` : "your"} profile.
-        </h2>
+        {Auth.loggedIn() ? (
+          <>
+            <h2 className="col-12 col-md-10 bg-dark text-light p-3 mb-5">
+              Viewing {userId ? `${user.username}'s` : "your"} profile.
+            </h2>
+          </>
+        ) : (
+          <h4>
+            You need to be logged in to see this. Use the navigation links above
+            to sign up or log in!
+          </h4>
+        )}
       </div>
     </div>
   );

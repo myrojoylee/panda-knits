@@ -9,6 +9,9 @@ import About from "./pages/About";
 import Profile from "./pages/Profile.jsx";
 import ErrorPage from "./pages/ErrorPage";
 
+import "bootstrap/dist/css/bootstrap.min.css";
+import "./index.css";
+
 const router = createBrowserRouter([
   {
     path: "/",
