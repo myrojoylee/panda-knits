@@ -19,15 +19,10 @@ body {
   flex-direction: column;
   width: 100%;
   min-height: 100vh;
-  background-color: var(--clr--body);
+  /* background-color: var(--clr--body); */
 }
 
 /* ====== HEADER ====== */
-
-/* #root {
-  display: flex;
-  width: 100%;
-} */
 
 header {
   display: flex;
@@ -38,22 +33,32 @@ header {
 }
 
 .nav {
-  padding-bottom: ;
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+.nav-link {
+  width: fit-content;
+  color: black;
+}
+
+.shopping-nav {
+  display: flex;
+  justify-self: end;
+  align-items: end;
+  margin: 0;
+  padding: 0;
+  width: fit-content;
+  color: black;
 }
 
 /* Logo */
 
 .navbar-wrapper {
   display: flex;
-  justify-content: end;
+  /* justify-content: end; */
   width: 100%;
 }
-
-/* .navbar {
-  margin: 0;
-  padding: 0;
-} */
-
 /* Logo */
 
 .panda-logo {

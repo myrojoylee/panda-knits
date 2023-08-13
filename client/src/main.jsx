@@ -8,6 +8,7 @@ import Login from "./pages/Login";
 import About from "./pages/About";
 import Profile from "./pages/Profile.jsx";
 import ErrorPage from "./pages/ErrorPage";
+import ShoppingCart from "./pages/ShoppingCart.jsx";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./index.css";
@@ -38,6 +39,11 @@ const router = createBrowserRouter([
         path: "/me",
         element: <Profile />,
       },
+      {
+        path: "/me/shoppingcart",
+        element: <ShoppingCart />,
+      },
+
       {
         path: "/profiles/:userId",
         element: <Profile />,
