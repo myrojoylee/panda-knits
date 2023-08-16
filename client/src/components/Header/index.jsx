@@ -38,7 +38,7 @@ function Header() {
           </>
         ) : (
           <>
-            <Link className="nav-link" to="/signup">
+            <Link className="nav-link" to="/login">
               <span>SignIn</span>
             </Link>
 
