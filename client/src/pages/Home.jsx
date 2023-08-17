@@ -1,5 +1,13 @@
-import React from "react";
+import ProductList from "../components/ProductList";
+import CategoryNav from "../components/CategoryNav";
+import ShoppingCart from "../components/Cart";
 
 export default function Home() {
-  return <main>{/* <h2> Main goes here! </h2> */}</main>;
+  return (
+    <main>
+      <CategoryNav />
+      <ProductList />
+      <ShoppingCart />
+    </main>
+  );
 }

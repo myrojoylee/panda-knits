@@ -5,10 +5,13 @@ import App from "./App.jsx";
 import Home from "./pages/Home";
 import Signup from "./pages/Signup";
 import Login from "./pages/Login";
+// About our company
 import About from "./pages/About";
+// Order History
 import Profile from "./pages/Profile.jsx";
 import ErrorPage from "./pages/ErrorPage";
-import ShoppingCart from "./pages/ShoppingCart.jsx";
+import ProductDetail from "./pages/ProductDetail.jsx";
+import Success from "./pages/Success";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./index.css";
@@ -32,21 +35,20 @@ const router = createBrowserRouter([
         element: <Signup />,
       },
       {
+        path: "/success",
+        element: <Success />,
+      },
+      {
         path: "/about",
         element: <About />,
       },
       {
-        path: "/me",
+        path: "/myprofile",
         element: <Profile />,
       },
       {
-        path: "/me/shoppingcart",
-        element: <ShoppingCart />,
-      },
-
-      {
-        path: "/profiles/:userId",
-        element: <Profile />,
+        path: "/products/:id",
+        element: <ProductDetail />,
       },
     ],
   },

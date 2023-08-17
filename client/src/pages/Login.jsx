@@ -5,9 +5,9 @@ import { LOGIN_USER } from "../utils/mutations";
 
 import Auth from "../utils/auth";
 
-const Login = (props) => {
+function Login(props) {
   const [formState, setFormState] = useState({ email: "", password: "" });
-  const [login, { error, data }] = useMutation(LOGIN_USER);
+  const [login, { error }] = useMutation(LOGIN_USER);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -82,6 +82,6 @@ const Login = (props) => {
       </div>
     </main>
   );
-};
+}
 
 export default Login;

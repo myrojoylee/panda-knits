@@ -9,6 +9,7 @@ import { Outlet } from "react-router-dom";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Navigation from "./components/Navigation";
+import { StoreProvider } from "./utils/GlobalState";
 
 const httpLink = createHttpLink({
   uri: "/graphql",
@@ -34,13 +35,15 @@ function App() {
   return (
     <>
       <ApolloProvider client={client}>
-        <Header />
-        <Navigation className="nav" />
-        <section className="container">
-          <Outlet />
-        </section>
+        <StoreProvider>
+          <Header />
+          <Navigation className="nav" />
+          <section className="container">
+            <Outlet />
+          </section>
+          <Footer />
+        </StoreProvider>
       </ApolloProvider>
-      <Footer />
     </>
   );
 }
