@@ -14,9 +14,23 @@
   --ff--body: "Roboto", sans-serif;
 }
 
+#root {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  width: 100%;
+}
+
+img {
+  display: flex;
+  width: 100%;
+}
+
 body {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   width: 100%;
   min-height: 100vh;
   /* background-color: var(--clr--body); */
@@ -94,7 +108,6 @@ header {
 footer {
   display: flex;
   justify-content: center;
-  position: fixed;
   bottom: 0;
   background-color: var(--clr--container);
   width: 100%;

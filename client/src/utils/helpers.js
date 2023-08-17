@@ -39,6 +39,7 @@ export function idbPromise(storeName, method, object) {
           all.onsuccess = function () {
             resolve(all.result);
           };
+          break;
         case "delete":
           store.delete(object._id);
           break;

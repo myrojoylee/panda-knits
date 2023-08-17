@@ -14,7 +14,7 @@ function CategoryNav() {
 
   const { categories } = state;
 
-  const { loading, dat: categoryData } = useQuery(QUERY_CATEGORIES);
+  const { loading, data: categoryData } = useQuery(QUERY_CATEGORIES);
 
   useEffect(() => {
     if (categoryData) {
@@ -48,7 +48,7 @@ function CategoryNav() {
       {categories.map((item) => (
         <button
           key={item._id}
-          onclick={() => {
+          onClick={() => {
             handleClick(item._id);
           }}
         >

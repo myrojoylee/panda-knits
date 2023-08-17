@@ -8,7 +8,7 @@ import Login from "./pages/Login";
 // About our company
 import About from "./pages/About";
 // Order History
-import Profile from "./pages/Profile.jsx";
+import MyOrders from "./pages/MyOrders.jsx";
 import ErrorPage from "./pages/ErrorPage";
 import ProductDetail from "./pages/ProductDetail.jsx";
 import Success from "./pages/Success";
@@ -39,12 +39,12 @@ const router = createBrowserRouter([
         element: <Success />,
       },
       {
-        path: "/about",
-        element: <About />,
+        path: "/myOrders",
+        element: <MyOrders />,
       },
       {
-        path: "/myprofile",
-        element: <Profile />,
+        path: "/about",
+        element: <About />,
       },
       {
         path: "/products/:id",
