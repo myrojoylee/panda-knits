@@ -37,7 +37,7 @@ const typeDefs = `
     category: Category
   }
 
-  type ProductInput {
+  input ProductInput {
     _id: ID
     purchaseQuantity: Int
     name: String
