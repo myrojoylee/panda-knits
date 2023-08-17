@@ -3,7 +3,7 @@ import PandaLogo from "../../assets/panda-knits-logo-v2.png";
 import Nav from "react-bootstrap/Nav";
 import { Link } from "react-router-dom";
 import Auth from "../../utils/auth";
-import Cart from "../Cart";
+// import Cart from "../Cart";
 
 function Header() {
   const logout = (event) => {
@@ -40,8 +40,6 @@ function Header() {
             <Link className="nav-link" to="/login">
               <span>SignIn</span>
             </Link>
-
-            <Cart />
           </>
         )}
       </Nav>
