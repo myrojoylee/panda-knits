@@ -45,23 +45,28 @@ function CategoryNav() {
   return (
     <div>
       <h2>Choose a category:</h2>
-      {categories.map((item) => (
+      <div className="categoryBtnList">
+        {categories.map((item) => (
+          <button
+            className="categoryBtn"
+            key={item._id}
+            onClick={() => {
+              handleClick(item._id);
+            }}
+          >
+            {item.name}
+          </button>
+        ))}
+
         <button
-          key={item._id}
+          className="categoryBtn"
           onClick={() => {
-            handleClick(item._id);
+            handleClick("");
           }}
         >
-          {item.name}
+          All
         </button>
-      ))}
-      <button
-        onClick={() => {
-          handleClick("");
-        }}
-      >
-        All
-      </button>
+      </div>
     </div>
   );
 }

@@ -42,6 +42,7 @@ const Cart = () => {
 
   function calculateTotal() {
     let sum = 0;
+    console.log(state.cart);
     state.cart.forEach((item) => {
       sum += item.price * item.purchaseQuantity;
     });
@@ -66,6 +67,7 @@ const Cart = () => {
     );
   }
 
+  console.log(state.cart);
   return (
     <div className="cart">
       <div className="close" onClick={toggleCart}>

@@ -28,7 +28,7 @@ function Header() {
         {Auth.loggedIn() ? (
           <>
             <Link className="nav-link" to="/me">
-              {Auth.getProfile().data.username}'s profile
+              {Auth.getProfile().data.firstName}'s profile
             </Link>
 
             <button className="btn btn-lg btn-light m-2" onClick={logout}>

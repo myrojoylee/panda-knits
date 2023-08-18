@@ -5,6 +5,8 @@
   padding: 0;
   list-style: none;
   font-size: 16px;
+  border: none;
+  background: none;
 }
 
 :root {
@@ -40,8 +42,9 @@ body {
 
 header {
   display: flex;
-  justify-content: center;
-  align-content: center;
+  flex-direction: column;
+  /* justify-content: center; */
+  /* align-content: center; */
   background-color: var(--clr--container);
   width: 100%;
 }
@@ -58,8 +61,8 @@ header {
 
 .shopping-nav {
   display: flex;
-  justify-self: end;
-  align-items: end;
+  /* justify-self: flex-start; */
+  /* align-items: start; */
   margin: 0;
   padding: 0;
   width: fit-content;
@@ -102,6 +105,21 @@ header {
   font-size: 1.5em;
 }
 
+/* ====== Category Btn List ===== */
+
+.categoryBtnList {
+  display: flex;
+  gap: 1em;
+}
+
+.categoryBtn {
+  border: 1px solid grey;
+  border-radius: 3em;
+  padding: 0.5em;
+  font-size: 1.25em;
+  width: 100px;
+}
+
 /* ============= Cart =========== */
 
 .cart {
@@ -110,6 +128,7 @@ header {
   right: 0;
   border: 1px solid grey;
   border-radius: 0.25em;
+  background-color: white;
   /* box-shadow: 0 0 1rem rgba(0, 0, 0, 0.5); */
 }
 

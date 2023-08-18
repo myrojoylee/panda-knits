@@ -10,7 +10,7 @@ import About from "./pages/About";
 // Order History
 import MyOrders from "./pages/MyOrders.jsx";
 import ErrorPage from "./pages/ErrorPage";
-import ProductDetail from "./pages/ProductDetail.jsx";
+import Detail from "./pages/Detail";
 import Success from "./pages/Success";
 
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -48,7 +48,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/products/:id",
-        element: <ProductDetail />,
+        element: <Detail />,
       },
     ],
   },

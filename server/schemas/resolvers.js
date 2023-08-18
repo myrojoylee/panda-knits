@@ -24,9 +24,6 @@ const resolvers = {
     product: async (parent, { _id }) => {
       return await Product.findById(_id).populate("category");
     },
-    product: async (parent, { _id }) => {
-      return await Product.findById(_id).populate("category");
-    },
     user: async (parent, args, context) => {
       if (context.user) {
         const user = await User.findById(context.user._id).populate({
@@ -65,7 +62,7 @@ const resolvers = {
             currency: "usd",
             product_data: {
               name: product.name,
-              desccription: product.description,
+              description: product.description,
               images: [`${url}/images/${product.image}`],
             },
             unit_amount: product.price * 100,
