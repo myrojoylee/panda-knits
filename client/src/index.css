@@ -7,13 +7,22 @@
   font-size: 16px;
   border: none;
   background: none;
+  box-sizing: border-box;
 }
 
 :root {
   --clr--container: rgb(232, 232, 232);
+  --clr--container--hover: rgb(216, 213, 213);
   --clr--body: rgba(252, 207, 205, 0.62);
   --ff--logo: "Bebas Neue", sans-serif;
   --ff--body: "Roboto", sans-serif;
+}
+
+a:visited,
+a:active,
+a:link {
+  color: black;
+  text-decoration: none;
 }
 
 #root {
@@ -34,8 +43,14 @@ body {
   flex-direction: column;
   justify-content: center;
   width: 100%;
-  min-height: 100vh;
+
   /* background-color: var(--clr--body); */
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 
 /* ============= HEADER =========== */
@@ -43,7 +58,7 @@ body {
 header {
   display: flex;
   flex-direction: column;
-  /* justify-content: center; */
+  justify-content: center;
   /* align-content: center; */
   background-color: var(--clr--container);
   width: 100%;
@@ -55,16 +70,6 @@ header {
 }
 
 .nav-link {
-  width: fit-content;
-  color: black;
-}
-
-.shopping-nav {
-  display: flex;
-  /* justify-self: flex-start; */
-  /* align-items: start; */
-  margin: 0;
-  padding: 0;
   width: fit-content;
   color: black;
 }
@@ -109,6 +114,7 @@ header {
 
 .categoryBtnList {
   display: flex;
+  flex-wrap: wrap;
   gap: 1em;
 }
 
@@ -124,12 +130,13 @@ header {
 
 .cart {
   position: fixed;
-  top: 0;
-  right: 0;
-  border: 1px solid grey;
+  top: 1em;
+  right: 1em;
+  border: 1px solid var(--clr--container--hover);
   border-radius: 0.25em;
   background-color: white;
-  /* box-shadow: 0 0 1rem rgba(0, 0, 0, 0.5); */
+  width: fit-content;
+  padding: 1rem 2.5rem 0.5rem 0.5rem;
 }
 
 .cart .close {
@@ -140,22 +147,105 @@ header {
   color: black;
 }
 
+.cart .close:hover {
+  text-decoration: underline;
+  font-weight: bold;
+}
+
 .cart-closed {
   position: fixed;
-  top: 2%;
-  right: 1%;
-  font-size: 2rem;
+  top: 30px;
+  right: 30px;
   cursor: pointer;
   background-color: white;
+  border: 1px solid var(--clr--container--hover);
   border-radius: 50%;
   padding: 0.25rem;
-  width: 50px;
-  height: 50px;
+  width: 40px;
+  height: 40px;
+}
+
+.item-detail input {
+  border: 1px solid var(--clr--container);
+}
+
+.remove-item {
+  background-color: var(--clr--container);
+  padding: 0.25em;
+  border-radius: 0.25em;
+}
+
+.remove-item:hover {
+  cursor: pointer;
+  background-color: var(--clr--container--hover);
+}
+
+/* --- cart "x" button ---*/
+
+.exit-before {
+  font-size: 2em;
+  margin: 10px 10px 0 0;
+}
+
+.exit-before:hover {
+  border-radius: 50%;
+  background-color: grey;
+  color: white;
+  border: 1px solid black;
+}
+
+.shopping-cart {
+  font-size: 1.5em;
+  margin-top: 5px;
+  /* margin-left: 3px; */
 }
 
 .cart img {
-  width: 70px;
+  width: 100px;
   margin-right: 1rem;
+}
+
+.cart h2 {
+  font-size: 1.1rem;
+  border-bottom: 1px solid var(--dark);
+  padding-bottom: 0.5rem;
+  margin: 1rem 0;
+}
+
+.cart h3 {
+  font-size: 1rem;
+  border-bottom: 1px solid var(--dark);
+  padding-bottom: 0.5rem;
+  margin: 1rem 0;
+}
+
+.cart input {
+  width: 50px;
+  padding: 0;
+  margin: 0 0.5rem 1rem 0;
+}
+
+.checkout-line {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.checkout-total {
+  display: flex;
+  justify-self: end;
+}
+
+.checkout-login-text {
+  background-color: var(--clr--container);
+  border-radius: 0.25em;
+  text-align: center;
+  padding: 0.25em 0;
+}
+
+.checkout-login-text:hover {
+  cursor: pointer;
+  background-color: var(--clr--container--hover);
 }
 
 /* ============= Product List =========== */
@@ -173,6 +263,48 @@ header {
   border: 1px solid grey;
   border-radius: 0.25em;
   width: 30%;
+  height: 50%;
+  overflow: hidden;
+}
+
+.product-card-image {
+  display: flex;
+  height: 100%;
+  border: 1px solid var(--clr--container--hover);
+}
+
+.product-card-image img {
+  object-fit: cover;
+  object-position: top;
+}
+
+.product-card-detail {
+  display: flex;
+  flex-direction: column;
+  height: 40%;
+  padding: 1em;
+}
+
+.product-card-stats {
+  display: flex;
+  flex-direction: column;
+}
+
+.addCartBtn {
+  background-color: var(--clr--container);
+  border-radius: 0.25em;
+}
+
+/* ========= LOGIN/SIGNUP ========= */
+
+.login-signup {
+  display: flex;
+  flex-direction: column;
+
+  border: 1px solid grey;
+  border-radius: 0.25em;
+  padding: 1em;
+  width: 75%;
 }
 
 /* ============= FOOTER =========== */

@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { Link } from "react-router-dom";
 import { loadStripe } from "@stripe/stripe-js";
 import { useLazyQuery } from "@apollo/client";
 import { QUERY_CHECKOUT } from "../../utils/queries";
@@ -10,6 +11,7 @@ import { TOGGLE_CART, ADD_MULTIPLE_TO_CART } from "../../utils/actions";
 // import "./style.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
+import { faCircleXmark } from "@fortawesome/free-regular-svg-icons";
 
 const stripePromise = loadStripe("pk_test_TYooMQauvdEDq54NiTphI7jx");
 
@@ -61,17 +63,16 @@ const Cart = () => {
     return (
       <div className="cart-closed" onClick={toggleCart}>
         <span role="img" aria-label="trash">
-          <FontAwesomeIcon icon={faCartShopping} />
+          <FontAwesomeIcon icon={faCartShopping} className="shopping-cart" />
         </span>
       </div>
     );
   }
 
-  console.log(state.cart);
   return (
     <div className="cart">
       <div className="close" onClick={toggleCart}>
-        [close]
+        <FontAwesomeIcon icon={faCircleXmark} className="exit-before" />
       </div>
       <h2>Shopping Cart</h2>
       {state.cart.length ? (
@@ -80,13 +81,15 @@ const Cart = () => {
             <CartItem key={item._id} item={item} />
           ))}
 
-          <div className="flex-row space-between">
-            <strong>Total: ${calculateTotal()}</strong>
+          <div className="checkout-line">
+            <p className="checkout-total">Total: ${calculateTotal()}</p>
 
             {Auth.loggedIn() ? (
               <button onClick={submitCheckout}>Checkout</button>
             ) : (
-              <span>(log in to check out)</span>
+              <Link to="/login" className="checkout-login-text">
+                log in to check out
+              </Link>
             )}
           </div>
         </div>
