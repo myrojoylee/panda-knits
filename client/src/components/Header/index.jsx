@@ -13,14 +13,14 @@ function Header() {
   };
   return (
     <header>
-      <section className="panda-logo">
+      <Link className="panda-logo" to="/">
         <img className="panda-logo-img" src={PandaLogo} />
         <article className="panda-logo-text">
           <span>panda</span>
           <span>knits</span>
         </article>
-      </section>
-      <Nav
+      </Link>
+      {/* <Nav
         className="shopping-nav"
         activeKey="/home"
         onSelect={(selectedKey) => alert(`selected ${selectedKey}`)}
@@ -42,7 +42,7 @@ function Header() {
             </Link>
           </>
         )}
-      </Nav>
+      </Nav> */}
     </header>
   );
 }

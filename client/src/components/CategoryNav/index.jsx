@@ -44,7 +44,7 @@ function CategoryNav() {
 
   return (
     <div>
-      <h2>Choose a category:</h2>
+      <h2>Knits for every need:</h2>
       <div className="categoryBtnList">
         {categories.map((item) => (
           <button

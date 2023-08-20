@@ -34,13 +34,15 @@ function ProductItem(item) {
 
   return (
     <div className="product-card">
-      <div className="product-card-image">
-        <img alt={name} src={`/images/${image}`} />
-      </div>
+      <Link className="linked-image" to={`/products/${_id}`}>
+        <div className="product-card-image">
+          <img alt={name} src={`/images/${image}`} />
+        </div>
+      </Link>
 
       <div className="product-card-detail">
         <Link to={`/products/${_id}`}>
-          <h4 className="product-card-heading">{name}</h4>
+          <h5 className="product-card-heading">{name}</h5>
         </Link>
         <div className="product-card-stats">
           {quantity} {pluralize("item", quantity)} in stock

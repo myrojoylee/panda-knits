@@ -32,13 +32,14 @@ const CartItem = ({ item }) => {
   };
 
   return (
-    <div className="flex-row">
-      <div>
+    <>
+      <div className="item-image">
         <img src={`/images/${item.image}`} alt="" />
       </div>
       <div>
-        <div>
-          {item.name}, ${item.price}
+        <div className="name-price">
+          <p className="item-name">{item.name}</p>
+          <p className="item-price">${item.price}</p>
         </div>
         <div className="item-detail">
           <span>Qty:</span>
@@ -58,7 +59,7 @@ const CartItem = ({ item }) => {
           </span>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

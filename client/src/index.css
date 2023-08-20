@@ -25,6 +25,12 @@ a:link {
   text-decoration: none;
 }
 
+p,
+button {
+  margin: 0;
+  padding: 0;
+}
+
 #root {
   display: flex;
   flex-direction: column;
@@ -84,30 +90,31 @@ header {
 
 .panda-logo {
   display: flex;
-  width: 100%;
-  align-content: center;
-  padding: 0.5em;
+  width: fit-content;
+  align-items: center;
+  padding-left: 1em;
   gap: 0.25em;
 }
 
 .panda-logo-img {
   display: flex;
-  width: 60px;
+  width: 65px;
+  height: 80px;
   padding: 0.25em;
 }
 
 .panda-logo-text {
   margin: 0;
   display: flex;
-  flex-direction: column;
+  /* flex-direction: column; */
   justify-content: center;
-  align-content: center;
+  align-items: center;
   font-family: var(--ff--body);
-  width: 100%;
+  width: fit-content;
 }
 
 .panda-logo span {
-  font-size: 1.5em;
+  font-size: 2em;
 }
 
 /* ====== Category Btn List ===== */
@@ -116,6 +123,7 @@ header {
   display: flex;
   flex-wrap: wrap;
   gap: 1em;
+  margin-bottom: 2em;
 }
 
 .categoryBtn {
@@ -128,15 +136,50 @@ header {
 
 /* ============= Cart =========== */
 
+.shopping-cart-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.shopping-cart-header {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--clr--container);
+  padding: 0.5em 2.5em 0 0.25em;
+}
+
+.shopping-cart-header h2 {
+  font-size: 1.25em;
+}
+
+.shopping-cart-header h3 {
+  font-size: 1em;
+}
+
+.shopping-cart-detail {
+  display: flex;
+  flex-direction: column;
+  padding: 0.5em;
+  gap: 0.5em;
+}
+
+.name-price {
+  display: flex;
+  flex-direction: column;
+}
+
+/* .name-price p {
+  margin: 0;
+} */
+
 .cart {
   position: fixed;
-  top: 1em;
-  right: 1em;
+  top: 63px;
+  right: 63px;
   border: 1px solid var(--clr--container--hover);
   border-radius: 0.25em;
   background-color: white;
   width: fit-content;
-  padding: 1rem 2.5rem 0.5rem 0.5rem;
 }
 
 .cart .close {
@@ -152,27 +195,76 @@ header {
   font-weight: bold;
 }
 
-.cart-closed {
+.cart-closed,
+.cart-open {
   position: fixed;
-  top: 30px;
-  right: 30px;
+  top: 15px;
+  right: 25px;
   cursor: pointer;
   background-color: white;
   border: 1px solid var(--clr--container--hover);
   border-radius: 50%;
   padding: 0.25rem;
-  width: 40px;
-  height: 40px;
+  width: 30px;
+  height: 30px;
 }
 
+.sign-in-icon-wrapper {
+  position: fixed;
+  top: 15px;
+  right: 65px;
+  cursor: pointer;
+  background-color: white;
+  border: 1px solid var(--clr--container--hover);
+  border-radius: 50%;
+  padding: 0.25rem;
+  width: 30px;
+  height: 30px;
+}
+
+.sign-in-icon-wrapper:hover {
+  background-color: var(--clr--container--hover);
+}
+
+.cart-closed:hover {
+  background-color: var(--clr--container--hover);
+}
+
+.open-shopping-cart:hover {
+  background-color: var(--clr--container--hover);
+}
+
+.cart-length {
+  position: fixed;
+  top: 7px;
+  right: 17px;
+  padding-left: 6px;
+  background-color: red;
+  color: white;
+  border: 1px solid white;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  font-size: 0.8em;
+  font-weight: bold;
+}
+
+.item-detail {
+  display: flex;
+  align-items: end;
+  gap: 0.5em;
+  padding: 0.5em 0;
+}
 .item-detail input {
+  display: flex;
+  width: 70px;
   border: 1px solid var(--clr--container);
 }
 
 .remove-item {
   background-color: var(--clr--container);
-  padding: 0.25em;
   border-radius: 0.25em;
+  padding: 0 0.25em;
 }
 
 .remove-item:hover {
@@ -183,8 +275,7 @@ header {
 /* --- cart "x" button ---*/
 
 .exit-before {
-  font-size: 2em;
-  margin: 10px 10px 0 0;
+  font-size: 1.5em;
 }
 
 .exit-before:hover {
@@ -194,41 +285,36 @@ header {
   border: 1px solid black;
 }
 
-.shopping-cart {
-  font-size: 1.5em;
-  margin-top: 5px;
-  /* margin-left: 3px; */
+.shopping-cart,
+.shopping-cart-open {
+  font-size: 1em;
+}
+
+.sign-in-icon {
+  font-size: 1em;
+  padding-left: 3px;
+  padding-bottom: 2px;
+}
+
+.shopping-cart:hover {
+  background-color: var(--clr--container--hover);
 }
 
 .cart img {
   width: 100px;
-  margin-right: 1rem;
+  margin-right: 1em;
 }
 
-.cart h2 {
-  font-size: 1.1rem;
-  border-bottom: 1px solid var(--dark);
-  padding-bottom: 0.5rem;
-  margin: 1rem 0;
-}
-
-.cart h3 {
-  font-size: 1rem;
-  border-bottom: 1px solid var(--dark);
-  padding-bottom: 0.5rem;
-  margin: 1rem 0;
-}
-
-.cart input {
-  width: 50px;
-  padding: 0;
-  margin: 0 0.5rem 1rem 0;
+.cart-empty {
+  font-size: 1em;
+  padding: 0 0.75em;
 }
 
 .checkout-line {
   display: flex;
   flex-direction: column;
   width: 100%;
+  border-top: 1px solid var(--clr--container--hover);
 }
 
 .checkout-total {
@@ -248,6 +334,11 @@ header {
   background-color: var(--clr--container--hover);
 }
 
+.checkout-total,
+.item-price {
+  font-weight: bold;
+}
+
 /* ============= Product List =========== */
 
 .product-card-list {
@@ -262,20 +353,24 @@ header {
   flex-direction: column;
   border: 1px solid grey;
   border-radius: 0.25em;
-  width: 30%;
-  height: 50%;
+  width: 25%;
+  height: 350px;
   overflow: hidden;
 }
 
 .product-card-image {
   display: flex;
-  height: 100%;
+  height: 200px;
   border: 1px solid var(--clr--container--hover);
 }
 
 .product-card-image img {
   object-fit: cover;
   object-position: top;
+}
+
+.product-card-image img:hover {
+  object-fit: contain;
 }
 
 .product-card-detail {
@@ -320,14 +415,75 @@ footer {
 
 /* ============= MEDIA QUERIES =========== */
 
+@media only screen and (min-width: 1200px) {
+  .product-card {
+    width: 20%;
+  }
+}
+
 @media (min-width: 768px) and (max-width: 992px) {
+  .panda-logo {
+    align-self: center;
+  }
+
+  .panda-logo span {
+    font-size: 2em;
+  }
+
   .product-card {
     width: 40%;
   }
 }
 
 @media only screen and (max-width: 768px) {
+  .panda-logo {
+    align-self: center;
+  }
+
+  .panda-logo-text {
+    flex-direction: column;
+  }
+
+  .cart-closed,
+  .cart-open {
+    top: 55px;
+    right: 25px;
+  }
+
+  .sign-in-icon-wrapper {
+    top: 15px;
+    right: 25px;
+  }
+
+  .cart-length {
+    top: 47px;
+    right: 17px;
+  }
+
+  .categoryBtnList {
+    justify-content: center;
+  }
+
+  .categoryBtn {
+    border: 1px solid grey;
+    border-radius: 3em;
+    padding: 0.5em;
+    font-size: 1.25em;
+    width: 100px;
+  }
+
+  .product-card-list {
+    justify-content: center;
+    padding: 0 1em;
+  }
+
   .product-card {
     width: 100%;
+  }
+}
+
+@media (min-width: 500px) and (max-width: 768px) {
+  .product-card {
+    width: 40%;
   }
 }

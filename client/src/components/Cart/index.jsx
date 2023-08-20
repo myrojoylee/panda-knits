@@ -8,9 +8,9 @@ import CartItem from "../CartItem";
 import Auth from "../../utils/auth";
 import { useStoreContext } from "../../utils/GlobalState.jsx";
 import { TOGGLE_CART, ADD_MULTIPLE_TO_CART } from "../../utils/actions";
-// import "./style.css";
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
+import { faCartShopping, faUser } from "@fortawesome/free-solid-svg-icons";
 import { faCircleXmark } from "@fortawesome/free-regular-svg-icons";
 
 const stripePromise = loadStripe("pk_test_TYooMQauvdEDq54NiTphI7jx");
@@ -61,41 +61,71 @@ const Cart = () => {
 
   if (!state.cartOpen) {
     return (
-      <div className="cart-closed" onClick={toggleCart}>
-        <span role="img" aria-label="trash">
-          <FontAwesomeIcon icon={faCartShopping} className="shopping-cart" />
-        </span>
-      </div>
+      <>
+        <div className="cart-closed" onClick={toggleCart}>
+          <span role="img" aria-label="trash">
+            <FontAwesomeIcon icon={faCartShopping} className="shopping-cart" />
+          </span>
+          {state.cart.length ? (
+            <span className="cart-length">{state.cart.length}</span>
+          ) : null}
+        </div>
+        <Link className="sign-in-icon-wrapper" to="/login">
+          <span role="img" aria-label="signup">
+            <FontAwesomeIcon icon={faUser} className="sign-in-icon" />
+          </span>
+        </Link>
+      </>
     );
   }
 
   return (
     <div className="cart">
+      <div className="cart-open">
+        <span role="img" aria-label="cart-is-open">
+          <FontAwesomeIcon
+            icon={faCartShopping}
+            className="shopping-cart-open"
+          />
+        </span>
+      </div>
+      <div className="sign-in-icon-wrapper">
+        <span role="img" aria-label="signup">
+          <FontAwesomeIcon icon={faUser} className="sign-in-icon" />
+        </span>
+      </div>
       <div className="close" onClick={toggleCart}>
         <FontAwesomeIcon icon={faCircleXmark} className="exit-before" />
       </div>
-      <h2>Shopping Cart</h2>
-      {state.cart.length ? (
-        <div>
-          {state.cart.map((item) => (
-            <CartItem key={item._id} item={item} />
-          ))}
-
-          <div className="checkout-line">
-            <p className="checkout-total">Total: ${calculateTotal()}</p>
-
-            {Auth.loggedIn() ? (
-              <button onClick={submitCheckout}>Checkout</button>
-            ) : (
-              <Link to="/login" className="checkout-login-text">
-                log in to check out
-              </Link>
-            )}
-          </div>
+      <div className="shopping-cart-wrapper">
+        <div className="shopping-cart-header">
+          <h2>Shopping Cart</h2>
+          <h3>({state.cart.length} items)</h3>
         </div>
-      ) : (
-        <h3>Your cart is empty</h3>
-      )}
+
+        {state.cart.length ? (
+          <div className="shopping-cart-detail">
+            <span className="cart-length">{state.cart.length}</span>
+            {state.cart.map((item) => (
+              <CartItem key={item._id} item={item} />
+            ))}
+
+            <div className="checkout-line">
+              <p className="checkout-total">Subtotal: ${calculateTotal()}</p>
+
+              {Auth.loggedIn() ? (
+                <button onClick={submitCheckout}>Checkout</button>
+              ) : (
+                <Link to="/login" className="checkout-login-text">
+                  log in to check out
+                </Link>
+              )}
+            </div>
+          </div>
+        ) : (
+          <h3 className="cart-empty">Your cart is empty.</h3>
+        )}
+      </div>
     </div>
   );
 };

@@ -13,7 +13,7 @@ function Navigation() {
   return (
     <Navbar collapseOnSelect expand="lg" className="navbar-wrapper">
       <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-      <Navbar.Collapse id="responsive-navbar-nav" className="align-self-end">
+      <Navbar.Collapse id="responsive-navbar-nav">
         <Nav className="ms-auto" defaultActiveKey="/">
           {Auth.loggedIn() ? (
             <>
@@ -21,7 +21,7 @@ function Navigation() {
                 Home
               </Link>
 
-              <Link className="nav-link" to="/me">
+              <Link className="nav-link" to="/myOrders">
                 {Auth.getProfile().data.username}'s profile
               </Link>
 
@@ -39,9 +39,9 @@ function Navigation() {
                 Login
               </Link> */}
 
-              {/* <Link className="nav-link" to="/signup">
+              <Link className="nav-link" to="/signup">
                 Sign In
-              </Link> */}
+              </Link>
 
               <Link className="nav-link" to="/about">
                 Our Story
