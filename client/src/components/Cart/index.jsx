@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { loadStripe } from "@stripe/stripe-js";
 import { useLazyQuery } from "@apollo/client";
@@ -10,7 +10,7 @@ import { useStoreContext } from "../../utils/GlobalState.jsx";
 import { TOGGLE_CART, ADD_MULTIPLE_TO_CART } from "../../utils/actions";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCartShopping, faUser } from "@fortawesome/free-solid-svg-icons";
+import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
 import { faCircleXmark } from "@fortawesome/free-regular-svg-icons";
 
 const stripePromise = loadStripe("pk_test_TYooMQauvdEDq54NiTphI7jx");
@@ -70,11 +70,6 @@ const Cart = () => {
             <span className="cart-length">{state.cart.length}</span>
           ) : null}
         </div>
-        <Link className="sign-in-icon-wrapper" to="/login">
-          <span role="img" aria-label="signup">
-            <FontAwesomeIcon icon={faUser} className="sign-in-icon" />
-          </span>
-        </Link>
       </>
     );
   }
@@ -87,11 +82,6 @@ const Cart = () => {
             icon={faCartShopping}
             className="shopping-cart-open"
           />
-        </span>
-      </div>
-      <div className="sign-in-icon-wrapper">
-        <span role="img" aria-label="signup">
-          <FontAwesomeIcon icon={faUser} className="sign-in-icon" />
         </span>
       </div>
       <div className="close" onClick={toggleCart}>
