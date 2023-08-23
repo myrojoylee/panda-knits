@@ -35,7 +35,7 @@ button {
   display: flex;
   flex-direction: column;
   justify-content: center;
-
+  min-height: 100vh;
   width: 100%;
 }
 
@@ -45,8 +45,13 @@ img {
 }
 
 body {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto 1fr auto;
+  grid-template-areas:
+    "header"
+    "content"
+    "footer";
   justify-content: center;
   width: 100%;
 
@@ -54,32 +59,54 @@ body {
 }
 
 .content {
+  grid-area: content;
   display: flex;
   flex-direction: column;
   height: 100%;
-  padding: 2em;
+  padding: 0 2em 2em 2em;
 }
 
 /* ============= HEADER =========== */
 
 header {
+  grid-area: header;
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
   background-color: var(--clr--container);
   width: 100%;
-  padding-right: 4em;
+  /* padding-right: 4em; */
+}
+
+.header-top {
+  display: flex;
+  background-color: var(--clr--container);
+  width: 100%;
+  /* justify-content: flex-end; */
 }
 
 .header-nav-icons {
   display: flex;
-  flex-direction: row;
+  justify-content: flex-end;
+  /* flex-direction: row; */
   /* align-self: center; */
-  padding-top: 10px;
+  padding: 1em 2em 0 0;
+  width: 100%;
 }
 
 .nav {
   display: flex;
   flex-wrap: nowrap;
+}
+
+.navbar {
+  /* position: sticky;
+  top: 4em; */
+  margin: 0;
+  padding: 0;
+
+  background-color: var(--clr--container);
+  padding: 0em 2em 0.5em;
 }
 
 .navbar-nav {
@@ -167,13 +194,13 @@ header {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  gap: 1em;
-  margin-bottom: 2em;
+  /* gap: 1em; */
+  /* margin-bottom: 2em; */
 }
 
 .categoryBtn {
   display: flex;
-  justify-content: center;
+  /* justify-content: center; */
   /* border: 1px solid grey; */
   border-radius: 3em;
   padding: 0.5em;
@@ -235,8 +262,8 @@ header {
 }
 
 .cart .close {
-  position: absolute;
-  top: 0.5rem;
+  /* position: absolute; */
+  top: 1.5rem;
   right: 0.5rem;
   cursor: pointer;
   color: black;
@@ -249,7 +276,7 @@ header {
 
 .cart-closed,
 .cart-open {
-  position: fixed;
+  /* position: fixed; */
   top: 9.5px;
   right: 30px;
   cursor: pointer;
@@ -440,6 +467,60 @@ header {
   border-radius: 0.25em;
 }
 
+/* =========== Product Page/Detail ========= */
+.detail-wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 2em;
+}
+
+.detail-body {
+  display: flex;
+}
+
+.detail-name {
+  font-size: 1.25em;
+}
+
+.detail-description {
+  display: flex;
+  flex-direction: column;
+  padding: 1em;
+  gap: 2em;
+}
+
+.detail-price {
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+.cart-btns {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
+.addCart {
+  display: flex;
+  width: fit-content;
+  padding: 0 0.5em;
+  background-color: var(--clr--container);
+  border-radius: 0.5em;
+}
+
+.addCart:hover {
+  background-color: var(--clr--container--hover);
+}
+
+.removeCart {
+  display: flex;
+  width: fit-content;
+  padding: 0 0.5em;
+  background-color: var(--clr--container--hover);
+  border-radius: 0.5em;
+}
+
 /* ========= LOGIN/SIGNUP ========= */
 
 .login-signup {
@@ -455,6 +536,7 @@ header {
 /* ============= FOOTER =========== */
 
 footer {
+  grid-area: footer;
   display: flex;
   justify-content: center;
   bottom: 0;
@@ -493,8 +575,10 @@ footer {
   .panda-logo span {
     font-size: 1.5em;
   }
-  header {
-    padding-right: 2em;
+
+  .header-nav-icons {
+    flex-direction: column;
+    align-items: end;
   }
 
   .cart-closed,
@@ -550,5 +634,9 @@ footer {
 @media screen and (max-width: 500px) {
   .product-card-list {
     grid-template-columns: 1fr;
+  }
+
+  .detail-body {
+    flex-direction: column;
   }
 }

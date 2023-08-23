@@ -76,7 +76,7 @@ const Cart = () => {
 
   return (
     <div className="cart">
-      <div className="cart-open">
+      <div className="cart-closed">
         <span role="img" aria-label="cart-is-open">
           <FontAwesomeIcon
             icon={faCartShopping}

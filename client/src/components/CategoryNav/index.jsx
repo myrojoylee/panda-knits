@@ -56,7 +56,7 @@ function CategoryNav() {
         >
           <Offcanvas.Header closeButton>
             <Offcanvas.Title id="offcanvasNavbarLabel-expand-md">
-              Quick Search
+              Quick Filter
             </Offcanvas.Title>
           </Offcanvas.Header>
           <Offcanvas.Body>
@@ -72,6 +72,14 @@ function CategoryNav() {
                   {item.name}
                 </Link>
               ))}
+              <button
+                className="categoryBtn"
+                onClick={() => {
+                  handleClick("");
+                }}
+              >
+                All
+              </button>
             </Nav>
           </Offcanvas.Body>
         </Navbar.Offcanvas>

@@ -8,6 +8,7 @@ import { setContext } from "@apollo/client/link/context";
 import { Outlet } from "react-router-dom";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+// import CategoryNav from "./components/CategoryNav";
 // import Navigation from "./components/Navigation";
 import { StoreProvider } from "./utils/GlobalState";
 
@@ -37,6 +38,7 @@ function App() {
       <ApolloProvider client={client}>
         <StoreProvider>
           <Header />
+          {/* <CategoryNav /> */}
           <section className="content">
             <Outlet />
           </section>

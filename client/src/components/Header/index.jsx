@@ -6,11 +6,11 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 import { Nav, Modal, Tab } from "react-bootstrap";
 import Cart from "../Cart";
+import CategoryNav from "../CategoryNav";
 
 import { Link } from "react-router-dom";
 
 import Auth from "../../utils/auth";
-// import Cart from "../Cart";
 
 function Header() {
   const [showModal, setShowModal] = useState(false);
@@ -21,25 +21,28 @@ function Header() {
   };
   return (
     <header>
-      <Link className="panda-logo" to="/">
-        <img className="panda-logo-img" src={PandaLogo} />
-        <article className="panda-logo-text">
-          <span>panda</span>
-          <span>knits</span>
-        </article>
-      </Link>
-      <section className="header-nav-icons">
-        <Link
-          className="sign-in-icon-wrapper"
-          onClick={() => setShowModal(true)}
-        >
-          <span role="img" aria-label="signup">
-            <FontAwesomeIcon icon={faUser} className="sign-in-icon" />
-          </span>
-        </Link>
-        <Cart />
+      <section className="header-top">
+        <section>
+          <Link className="panda-logo" to="/">
+            <img className="panda-logo-img" src={PandaLogo} />
+            <article className="panda-logo-text">
+              <span>panda</span>
+              <span>knits</span>
+            </article>
+          </Link>
+        </section>
+        <section className="header-nav-icons">
+          <Link
+            className="sign-in-icon-wrapper"
+            onClick={() => setShowModal(true)}
+          >
+            <span role="img" aria-label="signup">
+              <FontAwesomeIcon icon={faUser} className="sign-in-icon" />
+            </span>
+          </Link>
+          <Cart />
+        </section>
       </section>
-
       {/* <Nav
         className="shopping-nav"
         activeKey="/home"
@@ -95,6 +98,7 @@ function Header() {
           </Modal.Body>
         </Tab.Container>
       </Modal>
+      <CategoryNav />
     </header>
   );
 }
