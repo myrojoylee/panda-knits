@@ -34,6 +34,9 @@ const productSchema = new Schema({
       name: {
         type: String,
       },
+      data: {
+        type: String,
+      },
     }),
   ],
 });

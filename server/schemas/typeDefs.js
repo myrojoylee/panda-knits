@@ -12,6 +12,12 @@ const typeDefs = `
     quantity: Int
     price: Float
     category: Category
+    personal: [Personal]
+  }
+
+  type Personal {
+    name: String
+    data: String
   }
 
   type Order {

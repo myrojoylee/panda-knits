@@ -25,6 +25,7 @@ db.once("open", async () => {
       category: categories[0]._id,
       price: 29.99,
       quantity: 3,
+      personal: [],
     },
     {
       name: `S'mores Mittens`,
@@ -33,6 +34,7 @@ db.once("open", async () => {
       category: categories[1]._id,
       price: 19.99,
       quantity: 2,
+      personal: [],
     },
     {
       name: "Pumpkin Spice Hat",
@@ -41,6 +43,7 @@ db.once("open", async () => {
       category: categories[2]._id,
       price: 24.99,
       quantity: 3,
+      personal: [],
     },
     {
       name: `Infant hat & sweater set`,
@@ -49,6 +52,7 @@ db.once("open", async () => {
       category: categories[3]._id,
       price: 39.99,
       quantity: 3,
+      personal: [],
     },
     {
       name: "Jumbo Christmas Stocking",
@@ -57,6 +61,7 @@ db.once("open", async () => {
       category: categories[4]._id,
       price: 29.99,
       quantity: 1,
+      personal: [{ name: "name", data: "John" }],
     },
   ]);
 
@@ -71,7 +76,7 @@ db.once("open", async () => {
     password: "Minnie1234",
     orders: [
       {
-        products: [products[0], products[0], products[1]],
+        products: [products[0], products[0], products[4]],
       },
     ],
   });

@@ -41,6 +41,10 @@ export const QUERY_PRODUCTS = gql`
       category {
         _id
       }
+      personal {
+        name
+        data
+      }
     }
   }
 `;
