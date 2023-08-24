@@ -56,7 +56,7 @@ function CategoryNav() {
         >
           <Offcanvas.Header closeButton>
             <Offcanvas.Title id="offcanvasNavbarLabel-expand-md">
-              Quick Filter
+              Quick Navigate
             </Offcanvas.Title>
           </Offcanvas.Header>
           <Offcanvas.Body>
@@ -80,49 +80,13 @@ function CategoryNav() {
               >
                 All
               </button>
+              {/* <Link to="/myOrders">My Orders</Link> */}
             </Nav>
           </Offcanvas.Body>
         </Navbar.Offcanvas>
       </Navbar>
     </>
   );
-
-  // return (
-  //   <>
-  //     {[false, "sm", "md", "lg", "xl", "xxl"].map((expand) => (
-  //       <Navbar key={expand} expand={expand} className="navbar-wrapper">
-  //         <Navbar.Toggle
-  //           aria-controls="responsive-navbar-nav"
-  //           data-bs-toggle="offcanvas"
-  //         />
-  //         <Navbar.Collapse aria-controls={`offcanvasNavbar-expand-${expand}`}>
-  //           <Nav className="categoryBtnList" defaultActiveKey="/">
-  //             {categories.map((item) => (
-  //               <Link
-  //                 key={item._id}
-  //                 className="categoryBtn"
-  //                 onClick={() => {
-  //                   handleClick(item._id);
-  //                 }}
-  //               >
-  //                 {item.name}
-  //               </Link>
-  //             ))}
-
-  //             <button
-  //               className="categoryBtn"
-  //               onClick={() => {
-  //                 handleClick("");
-  //               }}
-  //             >
-  //               All
-  //             </button>
-  //           </Nav>
-  //         </Navbar.Collapse>
-  //       </Navbar>
-  //     ))}
-  //   </>
-  // );
 }
 
 export default CategoryNav;

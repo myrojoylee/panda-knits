@@ -29,9 +29,12 @@ const orderProductSchema = new Schema({
     ref: "Category",
     required: true,
   },
-  personalFields: [
+  personal: [
     new Schema({
       name: {
+        type: String,
+      },
+      data: {
         type: String,
       },
     }),
@@ -44,19 +47,6 @@ const orderSchema = new Schema({
     default: Date.now,
   },
   products: [orderProductSchema],
-  // products: [
-  //   {
-  //     type: Schema.Types.ObjectId,
-  //     ref: "Product",
-  //   },
-  // ],
-  // personalFields: [
-  //   {
-  //     name: {
-  //       type: String,
-  //     },
-  //   },
-  // ],
 });
 
 const Order = mongoose.model("Order", orderSchema);

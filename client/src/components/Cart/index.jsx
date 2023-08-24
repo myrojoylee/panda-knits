@@ -6,8 +6,12 @@ import { QUERY_CHECKOUT } from "../../utils/queries";
 import { idbPromise } from "../../utils/helpers";
 import CartItem from "../CartItem";
 import Auth from "../../utils/auth";
+import LoginForm from "../LoginForm";
+import SignUpForm from "../SignUpForm";
 import { useStoreContext } from "../../utils/GlobalState.jsx";
 import { TOGGLE_CART, ADD_MULTIPLE_TO_CART } from "../../utils/actions";
+
+import { Nav, Modal, Tab } from "react-bootstrap";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
@@ -18,6 +22,7 @@ const stripePromise = loadStripe("pk_test_TYooMQauvdEDq54NiTphI7jx");
 const Cart = () => {
   const [state, dispatch] = useStoreContext();
   const [getCheckout, { data }] = useLazyQuery(QUERY_CHECKOUT);
+  const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
     if (data) {
@@ -106,7 +111,10 @@ const Cart = () => {
               {Auth.loggedIn() ? (
                 <button onClick={submitCheckout}>Checkout</button>
               ) : (
-                <Link to="/login" className="checkout-login-text">
+                <Link
+                  onClick={() => setShowModal(true)}
+                  className="checkout-login-text"
+                >
                   log in to check out
                 </Link>
               )}
@@ -116,6 +124,39 @@ const Cart = () => {
           <h3 className="cart-empty">Your cart is empty.</h3>
         )}
       </div>
+      <Modal
+        size="lg"
+        show={showModal}
+        onHide={() => setShowModal(false)}
+        aria-labelledby="signup-modal"
+      >
+        {/* tab container to do either signup or login component */}
+        <Tab.Container defaultActiveKey="login">
+          <Modal.Header closeButton>
+            <Modal.Title id="signup-modal">
+              <Nav variant="pills">
+                <Nav.Item>
+                  <Nav.Link eventKey="login">Login</Nav.Link>
+                </Nav.Item>
+                <Nav.Item>
+                  <Nav.Link eventKey="signup">Sign Up</Nav.Link>
+                </Nav.Item>
+                <Nav.Item></Nav.Item>
+              </Nav>
+            </Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <Tab.Content>
+              <Tab.Pane eventKey="login">
+                <LoginForm handleModalClose={() => setShowModal(false)} />
+              </Tab.Pane>
+              <Tab.Pane eventKey="signup">
+                <SignUpForm handleModalClose={() => setShowModal(false)} />
+              </Tab.Pane>
+            </Tab.Content>
+          </Modal.Body>
+        </Tab.Container>
+      </Modal>
     </div>
   );
 };

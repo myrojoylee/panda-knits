@@ -50,37 +50,6 @@ const resolvers = {
 
       throw AuthenticationError;
     },
-
-    checkout: async (parent, args, context) => {
-      const url = new URL(context.headers.referer).origin;
-      await new Order({ products: args.products });
-      const line_items = [];
-
-      for (const product of args.products) {
-        line_items.push({
-          price_data: {
-            currency: "usd",
-            product_data: {
-              name: product.name,
-              description: product.description,
-              images: [`${url}/images/${product.image}`],
-            },
-            unit_amount: product.price * 100,
-          },
-          quantity: product.purchaseQuantity,
-        });
-      }
-
-      const session = await stripe.checkout.sessions.create({
-        payment_method_types: ["card"],
-        line_items,
-        mode: "payment",
-        success_url: `${url}/success?session_id={CHECKOUT_SESSION_ID}`,
-        cancel_url: `${url}/`,
-      });
-
-      return { session: session.id };
-    },
   },
 
   Mutation: {
@@ -118,18 +87,52 @@ const resolvers = {
       throw AuthenticationError;
     },
 
-    addOrder: async (parents, { products }, context) => {
-      if (context.user) {
-        const order = new Order({ products });
+    // addOrder: async (parents, { products }, context) => {
+    //   if (context.user) {
+    //     const order = new Order({ products });
 
-        await User.findByIdAndUpdate(context.user._id, {
-          $push: { orders: order },
+    //     await User.findByIdAndUpdate(context.user._id, {
+    //       $push: { orders: order },
+    //     });
+
+    //     return order;
+    //   }
+
+    //   throw AuthenticationError;
+    // },
+
+    checkout: async (parent, args, context) => {
+      const url = new URL(context.headers.referer).origin;
+      const order = await new Order({ products: args.products });
+      await User.findByIdAndUpdate(context.user._id, {
+        $push: { orders: order },
+      });
+      const line_items = [];
+
+      for (const product of args.products) {
+        line_items.push({
+          price_data: {
+            currency: "usd",
+            product_data: {
+              name: product.name,
+              description: product.description,
+              images: [`${url}/images/${product.image}`],
+            },
+            unit_amount: product.price * 100,
+          },
+          quantity: product.purchaseQuantity,
         });
-
-        return order;
       }
 
-      throw AuthenticationError;
+      const session = await stripe.checkout.sessions.create({
+        payment_method_types: ["card"],
+        line_items,
+        mode: "payment",
+        success_url: `${url}/success?session_id={CHECKOUT_SESSION_ID}`,
+        cancel_url: `${url}/`,
+      });
+
+      return { session: session.id };
     },
 
     updateProduct: async (parent, { _id, quantity }) => {

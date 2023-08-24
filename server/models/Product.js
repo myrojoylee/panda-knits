@@ -29,6 +29,13 @@ const productSchema = new Schema({
     ref: "Category",
     required: true,
   },
+  personal: [
+    new Schema({
+      name: {
+        type: String,
+      },
+    }),
+  ],
 });
 
 const Product = mongoose.model("Product", productSchema);

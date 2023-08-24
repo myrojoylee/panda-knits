@@ -32,14 +32,26 @@ function Header() {
           </Link>
         </section>
         <section className="header-nav-icons">
-          <Link
-            className="sign-in-icon-wrapper"
-            onClick={() => setShowModal(true)}
-          >
-            <span role="img" aria-label="signup">
-              <FontAwesomeIcon icon={faUser} className="sign-in-icon" />
-            </span>
-          </Link>
+          {Auth.loggedIn() ? (
+            <>
+              <Link className="sign-in-icon-wrapper" to="/myOrders">
+                <span role="img" aria-label="signup">
+                  <FontAwesomeIcon icon={faUser} className="sign-in-icon" />
+                </span>
+              </Link>
+              <Link onClick={logout}>Log Out</Link>
+            </>
+          ) : (
+            <Link
+              className="sign-in-icon-wrapper"
+              onClick={() => setShowModal(true)}
+            >
+              <span role="img" aria-label="signup">
+                <FontAwesomeIcon icon={faUser} className="sign-in-icon" />
+              </span>
+            </Link>
+          )}
+
           <Cart />
         </section>
       </section>
