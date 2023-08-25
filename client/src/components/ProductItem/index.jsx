@@ -5,8 +5,7 @@ import { ADD_TO_CART, UPDATE_CART_QUANTITY } from "../../utils/actions";
 
 function ProductItem(item) {
   const [state, dispatch] = useStoreContext();
-
-  const { image, name, _id, price, quantity } = item;
+  const { image, name, _id, price, quantity, personal } = item;
 
   const { cart } = state;
 
@@ -31,7 +30,7 @@ function ProductItem(item) {
       idbPromise("cart", "put", { ...item, purchaseQuantity: 1 });
     }
 
-    console.log(itemInCart);
+    console.log(item);
   };
 
   return (
