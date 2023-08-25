@@ -521,6 +521,18 @@ header {
   border-radius: 0.5em;
 }
 
+.customizeName {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.customizeName input {
+  display: flex;
+  width: 50%;
+  border: 1px solid var(--clr--container--hover);
+}
+
 /* ========= LOGIN/SIGNUP ========= */
 
 .login-signup {

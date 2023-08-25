@@ -40,6 +40,12 @@ const CartItem = ({ item }) => {
         <div className="name-price">
           <p className="item-name">{item.name}</p>
           <p className="item-price">${item.price}</p>
+          {item.personal[0]?.data.personalName ? (
+            <>
+              <p>Custom name: </p>
+              <p>{item.personal[0].data.personalName}</p>
+            </>
+          ) : null}
         </div>
         <div className="item-detail">
           <span>Qty:</span>

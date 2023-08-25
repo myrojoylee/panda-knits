@@ -20,9 +20,15 @@ function Detail() {
 
   const [currentProduct, setCurrentProduct] = useState({});
 
+  const [personalName, setPersonalName] = useState("");
   const { loading, data } = useQuery(QUERY_PRODUCTS);
 
   const { products, cart } = state;
+
+  const handleChange = (event) => {
+    console.log(event.target.value);
+    setPersonalName(event.target.value);
+  };
 
   useEffect(() => {
     // already in global store
@@ -53,6 +59,7 @@ function Detail() {
 
   const addToCart = () => {
     const itemInCart = cart.find((cartItem) => cartItem._id === id);
+
     if (itemInCart) {
       dispatch({
         type: UPDATE_CART_QUANTITY,
@@ -66,9 +73,17 @@ function Detail() {
     } else {
       dispatch({
         type: ADD_TO_CART,
-        product: { ...currentProduct, purchaseQuantity: 1 },
+        product: {
+          ...currentProduct,
+          purchaseQuantity: 1,
+          personal: [{ name: "personalName", data: { personalName } }],
+        },
       });
-      idbPromise("cart", "put", { ...currentProduct, purchaseQuantity: 1 });
+      idbPromise("cart", "put", {
+        ...currentProduct,
+        purchaseQuantity: 1,
+        personal: [{ name: "personalName", data: { personalName } }],
+      });
     }
   };
 
@@ -101,6 +116,28 @@ function Detail() {
             <div className="detail-description">
               <p className="detail-price">${currentProduct.price}</p>
               <p>{currentProduct.description}</p>
+              {currentProduct.personal?.length ? (
+                <>
+                  <form className="customizeName">
+                    <label htmlFor={currentProduct.personal[0].name}>
+                      Enter Name:
+                    </label>
+
+                    <input
+                      placeholder="Enter name here"
+                      name="personalName"
+                      value={personalName}
+                      id="personalName"
+                      type="text"
+                      onChange={handleChange}
+                    />
+                  </form>
+                </>
+              ) : (
+                <>
+                  <p>hi</p>
+                </>
+              )}
               <p className="cart-btns">
                 <button className="addCart" onClick={addToCart}>
                   + Add to Cart

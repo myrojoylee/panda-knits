@@ -30,7 +30,7 @@ function ProductItem(item) {
       idbPromise("cart", "put", { ...item, purchaseQuantity: 1 });
     }
 
-    console.log(item);
+    console.log(personal[0].data);
   };
 
   return (
@@ -44,6 +44,7 @@ function ProductItem(item) {
       <div className="product-card-detail">
         <Link to={`/products/${_id}`}>
           <h5 className="product-card-heading">{name}</h5>
+          {/* <p>{personal[0]?.data}</p> */}
         </Link>
         <div className="product-card-stats">
           {quantity} {pluralize("item", quantity)} in stock

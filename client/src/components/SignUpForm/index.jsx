@@ -67,7 +67,7 @@ const SignupForm = () => {
         </Alert>
 
         <Form.Group className="mb-3">
-          <Form.Label htmlFor="firstName">Username</Form.Label>
+          <Form.Label htmlFor="firstName">First Name</Form.Label>
           <Form.Control
             type="text"
             placeholder="First Name"
@@ -82,7 +82,7 @@ const SignupForm = () => {
         </Form.Group>
 
         <Form.Group className="mb-3">
-          <Form.Label htmlFor="lastName">Username</Form.Label>
+          <Form.Label htmlFor="lastName">Last Name</Form.Label>
           <Form.Control
             type="text"
             placeholder="Last Name"
