@@ -133,11 +133,7 @@ function Detail() {
                     />
                   </form>
                 </>
-              ) : (
-                <>
-                  <p>hi</p>
-                </>
-              )}
+              ) : null}
               <p className="cart-btns">
                 <button className="addCart" onClick={addToCart}>
                   + Add to Cart

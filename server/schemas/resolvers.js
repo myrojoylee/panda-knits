@@ -1,5 +1,8 @@
 const { User, Product, Category, Order } = require("../models");
 const { signToken, AuthenticationError } = require("../utils/auth");
+const stripe = require("stripe")(
+  "sk_test_51NimT1ADpz9jWnXhePQBaHDuUdF87cua3deqCADAAH9mUoCo1AKMLUktBPWAgUAyqcUWyU2OxN6BG6LNsPsX3HJB00nNg3lzbv"
+);
 
 const resolvers = {
   Query: {
@@ -88,20 +91,6 @@ const resolvers = {
 
       throw AuthenticationError;
     },
-
-    // addOrder: async (parents, { products }, context) => {
-    //   if (context.user) {
-    //     const order = new Order({ products });
-
-    //     await User.findByIdAndUpdate(context.user._id, {
-    //       $push: { orders: order },
-    //     });
-
-    //     return order;
-    //   }
-
-    //   throw AuthenticationError;
-    // },
 
     checkout: async (parent, args, context) => {
       const url = new URL(context.headers.referer).origin;

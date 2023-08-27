@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { loadStripe } from "@stripe/stripe-js";
-import { useLazyQuery } from "@apollo/client";
-import { QUERY_CHECKOUT } from "../../utils/queries";
+import { useMutation } from "@apollo/client";
+// import { useLazyQuery } from "@apollo/client";
+// import { QUERY_CHECKOUT } from "../../utils/queries";
+import { CHECKOUT } from "../../utils/mutations";
 import { idbPromise } from "../../utils/helpers";
 import CartItem from "../CartItem";
 import Auth from "../../utils/auth";
@@ -17,12 +19,15 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
 import { faCircleXmark } from "@fortawesome/free-regular-svg-icons";
 
-const stripePromise = loadStripe("pk_test_TYooMQauvdEDq54NiTphI7jx");
+const stripePromise = loadStripe(
+  "pk_test_51NimT1ADpz9jWnXhWtoF3if89KLMIkzm7JXohIVggIUZ1886REoryULRW5M2AuaVB55NQRF10cIgfbLoOzlTm9S300yRXOdrOA"
+);
 
 const Cart = () => {
   const [state, dispatch] = useStoreContext();
-  const [getCheckout, { data }] = useLazyQuery(QUERY_CHECKOUT);
+  // const [getCheckout, { data }] = useLazyQuery(QUERY_CHECKOUT);
   const [showModal, setShowModal] = useState(false);
+  const [checkout, { error, data }] = useMutation(CHECKOUT);
 
   useEffect(() => {
     if (data) {
@@ -56,13 +61,20 @@ const Cart = () => {
     return sum.toFixed(2);
   }
 
-  function submitCheckout() {
-    getCheckout({
-      variables: {
-        products: [...state.cart],
-      },
-    });
-  }
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    try {
+      const { data } = await checkout({
+        variables: {
+          ...state.cart,
+        },
+      });
+
+      console.log(data);
+    } catch (err) {
+      console.error(err);
+    }
+  };
 
   if (!state.cartOpen) {
     return (
@@ -109,7 +121,7 @@ const Cart = () => {
               <p className="checkout-total">Subtotal: ${calculateTotal()}</p>
 
               {Auth.loggedIn() ? (
-                <button onClick={submitCheckout}>Checkout</button>
+                <button onClick={handleSubmit}>Checkout</button>
               ) : (
                 <Link
                   onClick={() => setShowModal(true)}
