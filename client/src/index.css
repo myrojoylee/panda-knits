@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Homemade+Apple&family=Roboto:wght@400;700&display=swap");
 
 * {
   margin: 0;
@@ -13,8 +13,10 @@
 :root {
   --clr--container: rgb(232, 232, 232);
   --clr--container--hover: rgb(216, 213, 213);
+  --clr--carousel--bg: rgba(216, 213, 213, 0.776);
   --clr--body: rgba(252, 207, 205, 0.62);
   --ff--logo: "Bebas Neue", sans-serif;
+  --ff--carousel: "Homemade Apple", sans-serif;
   --ff--body: "Roboto", sans-serif;
 }
 
@@ -414,6 +416,23 @@ header {
 .checkout-total,
 .item-price {
   font-weight: bold;
+}
+
+/* ============= Carousel =========== */
+
+.carousel-caption {
+  right: 25%;
+  left: 25%;
+}
+
+.carousel-header {
+  background-color: var(--clr--carousel--bg);
+  border-radius: 0.25em;
+}
+
+.carousel-header h3 {
+  font-family: var(--ff--carousel);
+  color: black;
 }
 
 /* ============= Product List =========== */
