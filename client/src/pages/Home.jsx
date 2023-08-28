@@ -1,11 +1,10 @@
+import HeroCarousel from "../components/HeroCarousel";
 import ProductList from "../components/ProductList";
-// import CategoryNav from "../components/CategoryNav";
-// import Cart from "../components/Cart";
 
 export default function Home() {
   return (
     <main>
-      {/* <Cart /> */}
+      <HeroCarousel />
       <ProductList />
     </main>
   );
