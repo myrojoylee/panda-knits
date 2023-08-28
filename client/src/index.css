@@ -13,7 +13,9 @@
 :root {
   --clr--container: rgb(232, 232, 232);
   --clr--container--hover: rgb(216, 213, 213);
-  --clr--carousel--bg: rgba(216, 213, 213, 0.776);
+  --clr--carousel--brown: rgba(101, 34, 25, 0.7);
+  --clr--carousel--beige: rgba(205, 149, 118, 0.7);
+  --clr--carousel--cream: rgba(252, 226, 202, 0.75);
   --clr--body: rgba(252, 207, 205, 0.62);
   --ff--logo: "Bebas Neue", sans-serif;
   --ff--carousel: "Homemade Apple", sans-serif;
@@ -420,22 +422,47 @@ header {
 
 /* ============= Carousel =========== */
 
-.carousel-caption {
+/* .carousel-caption {
   right: 25%;
   left: 25%;
-}
+} */
 
 .carousel-header {
-  background-color: var(--clr--carousel--bg);
+  /* background-color: var(--clr--carousel--bg); */
   border-radius: 0.25em;
 }
 
-.carousel-header h3 {
+.carousel-header {
   font-family: var(--ff--carousel);
   color: black;
 }
 
+.carousel-mitten-text {
+  background-color: var(--clr--carousel--brown);
+  color: white;
+  right: 30%;
+  left: 30%;
+}
+
+.carousel-yarn-text {
+  background-color: var(--clr--carousel--beige);
+  color: black;
+  right: 27%;
+  left: 27%;
+}
+
+.carousel-stocking-text {
+  background-color: var(--clr--carousel--cream);
+  color: black;
+  right: 35%;
+  left: 35%;
+}
+
 /* ============= Product List =========== */
+
+.product-list-wrapper {
+  margin-top: 3em;
+}
 
 .product-card-list {
   display: grid;

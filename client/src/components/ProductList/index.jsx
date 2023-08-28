@@ -44,7 +44,7 @@ function ProductList() {
   }
 
   return (
-    <div>
+    <div className="product-list-wrapper">
       <h2>Browse below:</h2>
       {state.products.length ? (
         <div className="product-card-list">
