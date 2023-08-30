@@ -115,48 +115,23 @@ const resolvers = {
       try {
         console.log("do we get here");
         console.log(order);
-        // const session = await stripe.checkout.sessions.create({
-        //   line_items: [
-        //     order.products.map((product) => {
-        //       name = product.name;
-        //       description = product.description;
 
-        //       return product;
-        //     }),
-        //   ],
-        //   mode: "payment",
-        //   success_url: `${url}/success?orderNumber=${order._id}`,
-        //   cancel_url: `${url}/`,
-        // });
-        const line_items = [];
+        let line_items = [];
 
-        for (const product of order.products) {
-          line_items.push({
+        line_items = args.products.map((product) => {
+          return {
             price_data: {
               currency: "usd",
+
               product_data: {
                 name: product.name,
-                quantity: product.quantity,
               },
-              unit_amount: product.price * 100,
+              unit_amount_decimal: Math.round(product.price * 100),
+              tax_behavior: "exclusive",
             },
-          });
-        }
-
-        // for (const product of order.products) {
-        //   line_items.push({
-        //     price_data: {
-        //       currency: "usd",
-        //       product_data: {
-        //         name: product.name,
-        //         description: product.description,
-        //         images: [`${url}/images/${product.image}`],
-        //       },
-        //       price: product.price * 100,
-        //     },
-        //     quantity: product.purchaseQuantity,
-        //   });
-        // }
+            quantity: product.quantity,
+          };
+        });
 
         console.log(line_items);
         const session = await stripe.checkout.sessions.create({
@@ -166,15 +141,12 @@ const resolvers = {
           success_url: `${url}/success?orderNumber=${order._id}`,
           cancel_url: `${url}/`,
         });
-
+        console.log(session);
         return { sessionurl: session.url };
       } catch (e) {
         console.error(e);
       }
       throw new Error("Could not complete checkout!!!!");
-      // await User.findByIdAndUpdate(context.user._id, {
-      //   $push: { orders: order },
-      // });
     },
 
     updateProduct: async (parent, { _id, quantity }) => {
