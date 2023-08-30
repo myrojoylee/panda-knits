@@ -68,6 +68,7 @@ const Cart = () => {
             ...state.cart.map((product) => {
               delete product.__typename;
               delete product.category.__typename;
+              delete product.personal[0].__typename;
               return product;
             }),
           ],

@@ -36,6 +36,7 @@ const orderProductSchema = new Schema({
       },
       data: {
         type: String,
+        default: [""],
       },
     }),
   ],

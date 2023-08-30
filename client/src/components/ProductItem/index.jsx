@@ -5,12 +5,13 @@ import { ADD_TO_CART, UPDATE_CART_QUANTITY } from "../../utils/actions";
 
 function ProductItem(item) {
   const [state, dispatch] = useStoreContext();
-  const { image, name, _id, price, quantity, personal } = item;
+  const { image, name, _id, price, quantity, personalName } = item;
 
   const { cart } = state;
 
   const addToCart = () => {
     const itemInCart = cart.find((cartItem) => cartItem._id === _id);
+
     if (itemInCart) {
       dispatch({
         type: UPDATE_CART_QUANTITY,
@@ -26,8 +27,13 @@ function ProductItem(item) {
       dispatch({
         type: ADD_TO_CART,
         product: { ...item, purchaseQuantity: 1 },
+        personal: [{ name: "personalName", data: { personalName } }],
       });
-      idbPromise("cart", "put", { ...item, purchaseQuantity: 1 });
+      idbPromise("cart", "put", {
+        ...item,
+        purchaseQuantity: 1,
+        personal: [{ name: "personalName", data: { personalName } }],
+      });
     }
 
     // console.log(personal[0].data);

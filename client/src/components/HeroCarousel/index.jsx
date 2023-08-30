@@ -13,16 +13,16 @@ export default function HeroCarousel() {
   return (
     <Carousel activeIndex={index} onSelect={handleSelect}>
       <Carousel.Item>
-        <MittenHero text="First slide" />
-        <Carousel.Caption className="carousel-header carousel-mitten-text">
-          <h3>Warm up with these styles</h3>
+        <YarnHero text="First slide" />
+        <Carousel.Caption className="carousel-header carousel-yarn-text">
+          <h3>Unique materials for a unique you</h3>
           {/* <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p> */}
         </Carousel.Caption>
       </Carousel.Item>
       <Carousel.Item>
-        <YarnHero text="Second slide" />
-        <Carousel.Caption className="carousel-header carousel-yarn-text">
-          <h3>Unique materials mean a unique you</h3>
+        <MittenHero text="Second slide" />
+        <Carousel.Caption className="carousel-header carousel-mitten-text">
+          <h3>Warm up with these styles</h3>
           {/* <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p> */}
         </Carousel.Caption>
       </Carousel.Item>

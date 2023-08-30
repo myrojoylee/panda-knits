@@ -122,14 +122,13 @@ const resolvers = {
           return {
             price_data: {
               currency: "usd",
-
               product_data: {
                 name: product.name,
               },
               unit_amount_decimal: Math.round(product.price * 100),
               tax_behavior: "exclusive",
             },
-            quantity: product.quantity,
+            quantity: product.purchaseQuantity,
           };
         });
 
