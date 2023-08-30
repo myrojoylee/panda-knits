@@ -26,10 +26,10 @@ const router = createBrowserRouter([
         index: true,
         element: <Home />,
       },
-      // {
-      //   path: "/success",
-      //   element: <Success />,
-      // },
+      {
+        path: "/success",
+        element: <Success />,
+      },
       {
         path: "/myOrders",
         element: <MyOrders />,

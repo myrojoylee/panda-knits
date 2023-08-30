@@ -32,24 +32,32 @@ export const ADD_USER = gql`
   }
 `;
 
+// export const CHECKOUT = gql`
+//   mutation checkout($products: [ProductInput]) {
+//     checkout(products: $products) {
+//       purchaseDate
+//       products {
+//         _id
+//         name
+//         description
+//         price
+//         quantity
+//         category {
+//           name
+//         }
+//         personal {
+//           name
+//           data
+//         }
+//       }
+//     }
+//   }
+// `;
+
 export const CHECKOUT = gql`
-  mutation checkout($products: [ID]!) {
+  mutation Mutation($products: [ProductInput]) {
     checkout(products: $products) {
-      purchaseDate
-      products {
-        _id
-        name
-        description
-        price
-        quantity
-        category {
-          name
-        }
-        personal {
-          name
-          data
-        }
-      }
+      sessionurl
     }
   }
 `;

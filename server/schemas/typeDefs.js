@@ -50,7 +50,7 @@ const typeDefs = `
   }
 
   type Checkout {
-    session: ID
+    sessionurl: String
   }
 
   type Auth {
@@ -61,11 +61,18 @@ const typeDefs = `
   input ProductInput {
     _id: ID
     purchaseQuantity: Int
+    description: String
+    category: CategoryInput
     name: String
     image: String
     price: Float
     quantity: Int
     personal: [orderPersonalInput]
+  }
+
+  input CategoryInput {
+    _id: String
+    name: String
   }
 
   input orderPersonalInput {

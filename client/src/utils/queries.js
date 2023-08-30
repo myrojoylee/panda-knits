@@ -36,6 +36,7 @@ export const QUERY_PRODUCTS = gql`
       image
       category {
         _id
+        name
       }
       personal {
         name
@@ -63,12 +64,30 @@ export const QUERY_ALL_PRODUCTS = gql`
       price
       quantity
       category {
+        _id
         name
       }
       personal {
         name
         data
       }
+    }
+  }
+`;
+
+export const QUERY_SINGLE_ORDER = gql`
+  query Query($id: ID!) {
+    order(_id: $id) {
+      products {
+        _id
+        description
+        image
+        name
+        price
+        quantity
+      }
+      _id
+      purchaseDate
     }
   }
 `;

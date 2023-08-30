@@ -3,6 +3,7 @@ const { signToken, AuthenticationError } = require("../utils/auth");
 const stripe = require("stripe")(
   "sk_test_51NimT1ADpz9jWnXhePQBaHDuUdF87cua3deqCADAAH9mUoCo1AKMLUktBPWAgUAyqcUWyU2OxN6BG6LNsPsX3HJB00nNg3lzbv"
 );
+require("dotenv").config();
 
 const resolvers = {
   Query: {
@@ -21,8 +22,9 @@ const resolvers = {
           $regex: name,
         };
       }
-
-      return await Product.find(params).populate("category");
+      const products = await Product.find(params).populate("category");
+      console.log(products);
+      return products;
     },
     product: async (parent, { _id }) => {
       return await Product.findById(_id)
@@ -45,12 +47,13 @@ const resolvers = {
     },
     order: async (parent, { _id }, context) => {
       if (context.user) {
-        const user = await User.findById(context.user._id).populate({
-          path: "orders.products",
-          populate: "category",
-        });
-
-        return user.orders.id(_id);
+        // const user = await User.findById(context.user._id).populate({
+        //   path: "orders.products",
+        //   populate: "category",
+        // });
+        const order = await Order.findById(_id);
+        return order;
+        // return user.orders.id(_id);
       }
 
       throw AuthenticationError;
@@ -93,37 +96,85 @@ const resolvers = {
     },
 
     checkout: async (parent, args, context) => {
-      const url = new URL(context.headers.referer).origin;
-      const order = await new Order({ products: args.products });
-      await User.findByIdAndUpdate(context.user._id, {
-        $push: { orders: order },
-      });
-      const line_items = [];
-
-      for (const product of args.products) {
-        line_items.push({
-          price_data: {
-            currency: "usd",
-            product_data: {
-              name: product.name,
-              description: product.description,
-              images: [`${url}/images/${product.image}`],
-            },
-            unit_amount: product.price * 100,
-          },
-          quantity: product.purchaseQuantity,
+      // const url = new URL(context.headers.referer).origin;
+      console.log(args);
+      console.log("hello");
+      const url = process.env.DOMAIN;
+      let order = null;
+      try {
+        order = await Order.create({
+          products: args.products.map((product) => {
+            product.category = product.category._id;
+            return product;
+          }),
         });
+      } catch (e) {
+        console.error(e);
       }
 
-      const session = await stripe.checkout.sessions.create({
-        payment_method_types: ["card"],
-        line_items,
-        mode: "payment",
-        success_url: `${url}/success?session_id={CHECKOUT_SESSION_ID}`,
-        cancel_url: `${url}/`,
-      });
+      try {
+        console.log("do we get here");
+        console.log(order);
+        // const session = await stripe.checkout.sessions.create({
+        //   line_items: [
+        //     order.products.map((product) => {
+        //       name = product.name;
+        //       description = product.description;
 
-      return { session: session.id };
+        //       return product;
+        //     }),
+        //   ],
+        //   mode: "payment",
+        //   success_url: `${url}/success?orderNumber=${order._id}`,
+        //   cancel_url: `${url}/`,
+        // });
+        const line_items = [];
+
+        for (const product of order.products) {
+          line_items.push({
+            price_data: {
+              currency: "usd",
+              product_data: {
+                name: product.name,
+                quantity: product.quantity,
+              },
+              unit_amount: product.price * 100,
+            },
+          });
+        }
+
+        // for (const product of order.products) {
+        //   line_items.push({
+        //     price_data: {
+        //       currency: "usd",
+        //       product_data: {
+        //         name: product.name,
+        //         description: product.description,
+        //         images: [`${url}/images/${product.image}`],
+        //       },
+        //       price: product.price * 100,
+        //     },
+        //     quantity: product.purchaseQuantity,
+        //   });
+        // }
+
+        console.log(line_items);
+        const session = await stripe.checkout.sessions.create({
+          payment_method_types: ["card"],
+          line_items,
+          mode: "payment",
+          success_url: `${url}/success?orderNumber=${order._id}`,
+          cancel_url: `${url}/`,
+        });
+
+        return { sessionurl: session.url };
+      } catch (e) {
+        console.error(e);
+      }
+      throw new Error("Could not complete checkout!!!!");
+      // await User.findByIdAndUpdate(context.user._id, {
+      //   $push: { orders: order },
+      // });
     },
 
     updateProduct: async (parent, { _id, quantity }) => {

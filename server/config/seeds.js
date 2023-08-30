@@ -1,6 +1,7 @@
 const db = require("./connection");
 const { User, Product, Category } = require("../models");
 const cleanDB = require("./cleanDB");
+require("dotenv").config();
 
 db.once("open", async () => {
   await cleanDB("Category", "categories");
