@@ -25,7 +25,7 @@ db.once("open", async () => {
       image: "gryffindor-scarf-stripe.png",
       category: categories[0]._id,
       price: 29.99,
-      quantity: 3,
+      quantity: 0,
       personal: [],
     },
     {
@@ -34,7 +34,7 @@ db.once("open", async () => {
       image: "smores-mittens.png",
       category: categories[1]._id,
       price: 19.99,
-      quantity: 2,
+      quantity: 0,
       personal: [],
     },
     {
@@ -43,7 +43,7 @@ db.once("open", async () => {
       image: "pumpkin-spice-hat.png",
       category: categories[2]._id,
       price: 24.99,
-      quantity: 3,
+      quantity: 0,
       personal: [],
     },
     {
@@ -52,7 +52,7 @@ db.once("open", async () => {
       image: "baby-hat-sweater.png",
       category: categories[3]._id,
       price: 39.99,
-      quantity: 3,
+      quantity: 0,
       personal: [],
     },
     {
@@ -61,7 +61,7 @@ db.once("open", async () => {
       image: "christmas-stocking-snowman.png",
       category: categories[4]._id,
       price: 29.99,
-      quantity: 1,
+      quantity: 0,
       personal: [
         {
           name: "personalName",
