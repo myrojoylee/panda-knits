@@ -14,8 +14,8 @@
   --clr--container: rgb(232, 232, 232);
   --clr--container--hover: rgb(216, 213, 213);
   --clr--carousel--brown: rgba(101, 34, 25, 0.7);
-  --clr--carousel--beige: rgba(210, 94, 94, 0.7);
-  --clr--carousel--cream: rgba(252, 226, 202, 0.75);
+  --clr--carousel--beige: rgba(262, 177, 185, 0.7);
+  --clr--carousel--cream: rgba(252, 226, 202, 0.7);
   --clr--body: rgba(252, 207, 205, 0.62);
   --ff--logo: "Bebas Neue", sans-serif;
   --ff--carousel: "Homemade Apple", sans-serif;
@@ -369,6 +369,14 @@ header {
   font-size: 1em;
 }
 
+.shopping-cart {
+  background-color: blue;
+}
+
+.shopping-cart-open {
+  background-color: red;
+}
+
 .sign-in-icon {
   font-size: 1em;
   padding-left: 3px;
@@ -482,7 +490,9 @@ header {
 .product-card {
   display: flex;
   flex-direction: column;
-  border: 1px solid grey;
+  /* border: 1px solid grey; */
+  /* box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px; */
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   border-radius: 0.25em;
   width: 100%;
   height: 320px;
@@ -492,7 +502,7 @@ header {
 .product-card-image {
   display: flex;
   height: 200px;
-  border: 1px solid var(--clr--container--hover);
+  /* border: 1px solid var(--clr--container--hover); */
 }
 
 .product-card-image img {
