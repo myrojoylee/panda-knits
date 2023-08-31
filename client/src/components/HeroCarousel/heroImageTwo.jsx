@@ -1,9 +1,9 @@
-import YarnHero from "../../assets/yarn-hero-carousel.jpg";
+import MittenHero from "../../assets/mitten-carousel.png";
 
 export default function HeroImageTwo() {
   return (
     <>
-      <img src={YarnHero} />
+      <img src={MittenHero} />
     </>
   );
 }

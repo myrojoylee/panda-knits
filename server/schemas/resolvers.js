@@ -47,13 +47,8 @@ const resolvers = {
     },
     order: async (parent, { _id }, context) => {
       if (context.user) {
-        // const user = await User.findById(context.user._id).populate({
-        //   path: "orders.products",
-        //   populate: "category",
-        // });
         const order = await Order.findById(_id);
         return order;
-        // return user.orders.id(_id);
       }
 
       throw AuthenticationError;
@@ -96,7 +91,6 @@ const resolvers = {
     },
 
     checkout: async (parent, args, context) => {
-      // const url = new URL(context.headers.referer).origin;
       console.log(args);
       console.log("hello");
       const url = process.env.DOMAIN;
@@ -138,7 +132,7 @@ const resolvers = {
           line_items,
           mode: "payment",
           success_url: `${url}/success?orderNumber=${order._id}`,
-          cancel_url: `${url}/`,
+          cancel_url: `${url}`,
         });
         console.log(session);
         return { sessionurl: session.url };

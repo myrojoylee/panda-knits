@@ -1,9 +1,9 @@
-import MittenHero from "../../assets/mitten-hero-carousel.jpg";
+import InfantSetHero from "../../assets/infant-set-carousel.png";
 
 export default function HeroImageOne() {
   return (
     <>
-      <img src={MittenHero} />
+      <img src={InfantSetHero} />
     </>
   );
 }

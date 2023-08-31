@@ -36,6 +36,7 @@ const productSchema = new Schema({
       },
       data: {
         type: String,
+        default: "",
       },
     }),
   ],

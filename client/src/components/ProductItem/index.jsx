@@ -27,16 +27,14 @@ function ProductItem(item) {
       dispatch({
         type: ADD_TO_CART,
         product: { ...item, purchaseQuantity: 1 },
-        personal: [{ name: "personalName", data: { personalName } }],
+        personal: [{ data: personalName }],
       });
       idbPromise("cart", "put", {
         ...item,
         purchaseQuantity: 1,
-        personal: [{ name: "personalName", data: { personalName } }],
+        personal: [{ data: personalName }],
       });
     }
-
-    // console.log(personal[0].data);
   };
 
   return (
@@ -53,7 +51,7 @@ function ProductItem(item) {
           {/* <p>{personal[0]?.data}</p> */}
         </Link>
         <div className="product-card-stats">
-          {quantity} {pluralize("item", quantity)} in stock
+          {/* {quantity} {pluralize("item", quantity)} in stock */}
           <p>${price}</p>
         </div>
         <button className="addCartBtn" onClick={addToCart}>

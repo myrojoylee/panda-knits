@@ -76,15 +76,20 @@ function Detail() {
         product: {
           ...currentProduct,
           purchaseQuantity: 1,
-          personal: [{ name: "personalName", data: { personalName } }],
+          personal: [{ data: personalName }],
         },
       });
       idbPromise("cart", "put", {
         ...currentProduct,
         purchaseQuantity: 1,
-        personal: [{ name: "personalName", data: { personalName } }],
+        personal: [
+          {
+            data: personalName,
+          },
+        ],
       });
     }
+    console.log(cart);
   };
 
   const removeFromCart = () => {

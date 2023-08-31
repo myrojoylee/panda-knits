@@ -62,12 +62,7 @@ db.once("open", async () => {
       category: categories[4]._id,
       price: 29.99,
       quantity: 1,
-      personal: [
-        {
-          name: "personalName",
-          data: "",
-        },
-      ],
+      personal: [],
     },
   ]);
 

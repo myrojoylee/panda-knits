@@ -3,7 +3,7 @@ import { REMOVE_FROM_CART, UPDATE_CART_QUANTITY } from "../../utils/actions";
 import { idbPromise } from "../../utils/helpers";
 
 const CartItem = ({ item }) => {
-  const [, dispatch] = useStoreContext();
+  const [data, dispatch] = useStoreContext();
 
   const removeFromCart = (item) => {
     dispatch({
@@ -40,10 +40,10 @@ const CartItem = ({ item }) => {
         <div className="name-price">
           <p className="item-name">{item.name}</p>
           <p className="item-price">${item.price}</p>
-          {item.personal[0]?.data.personalName ? (
+          {item.personal[0]?.data ? (
             <>
               <p>Custom name: </p>
-              <p>{item.personal[0].data.personalName}</p>
+              <p>{item.personal[0].data}</p>
             </>
           ) : null}
         </div>
