@@ -37,32 +37,34 @@ const CartItem = ({ item }) => {
         <img src={`/images/${item.image}`} alt="" />
       </div>
       <div>
-        <div className="name-price">
-          <p className="item-name">{item.name}</p>
-          <p className="item-price">${item.price}</p>
-          {item.personal[0]?.data ? (
-            <>
-              <p>Custom name: </p>
-              <p>{item.personal[0].data}</p>
-            </>
-          ) : null}
-        </div>
-        <div className="item-detail">
-          <span>Qty:</span>
-          <input
-            type="number"
-            placeholder="1"
-            value={item.purchaseQuantity}
-            onChange={onChange}
-          />
-          <span
-            className="remove-item"
-            role="img"
-            aria-label="trash"
-            onClick={() => removeFromCart(item)}
-          >
-            remove
-          </span>
+        <div className="item-detail-wrapper">
+          <div className="name-price">
+            <p className="item-name">{item.name}</p>
+            <p className="item-price">${item.price}</p>
+            {item.personal[0]?.data ? (
+              <>
+                <p>Custom name: </p>
+                <p>{item.personal[0].data}</p>
+              </>
+            ) : null}
+          </div>
+          <div className="item-detail">
+            <span>Qty:</span>
+            <input
+              type="number"
+              placeholder="1"
+              value={item.purchaseQuantity}
+              onChange={onChange}
+            />
+            <span
+              className="remove-item"
+              role="img"
+              aria-label="trash"
+              onClick={() => removeFromCart(item)}
+            >
+              remove
+            </span>
+          </div>
         </div>
       </div>
     </>

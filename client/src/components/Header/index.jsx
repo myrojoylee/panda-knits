@@ -34,27 +34,41 @@ function Header() {
         <section className="header-nav-icons">
           {Auth.loggedIn() ? (
             <>
-              <Link className="sign-in-icon-wrapper" to="/myOrders">
+              <div>
+                <Link className="sign-in-icon-wrapper" to="/myOrders">
+                  <span role="img" aria-label="signup">
+                    <FontAwesomeIcon icon={faUser} className="sign-in-icon" />
+                  </span>
+                </Link>
+                <FontAwesomeIcon
+                  icon={faCartShopping}
+                  className="shopping-cart-stationary"
+                />
+              </div>
+              <Link className="logout" onClick={logout}>
+                Log Out
+              </Link>
+            </>
+          ) : (
+            <>
+              <Link
+                className="sign-in-icon-wrapper"
+                onClick={() => setShowModal(true)}
+              >
                 <span role="img" aria-label="signup">
                   <FontAwesomeIcon icon={faUser} className="sign-in-icon" />
                 </span>
               </Link>
-              <Link onClick={logout}>Log Out</Link>
+              <FontAwesomeIcon
+                icon={faCartShopping}
+                className="shopping-cart-stationary"
+              />
             </>
-          ) : (
-            <Link
-              className="sign-in-icon-wrapper"
-              onClick={() => setShowModal(true)}
-            >
-              <span role="img" aria-label="signup">
-                <FontAwesomeIcon icon={faUser} className="sign-in-icon" />
-              </span>
-            </Link>
           )}
-          <FontAwesomeIcon
+          {/* <FontAwesomeIcon
             icon={faCartShopping}
             className="shopping-cart-stationary"
-          />
+          /> */}
           <Cart />
         </section>
       </section>

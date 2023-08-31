@@ -73,6 +73,9 @@ body {
 /* ============= HEADER =========== */
 
 header {
+  position: sticky;
+  top: 0;
+  z-index: 200;
   grid-area: header;
   display: flex;
   flex-direction: column;
@@ -91,12 +94,15 @@ header {
 
 .header-nav-icons {
   display: flex;
-  justify-content: flex-end;
-  /* flex-direction: row; */
-  /* align-self: center; */
+  flex-direction: column;
+  align-items: flex-end;
   padding: 1em 2em 0 0;
   width: 100%;
   gap: 0.25em;
+}
+
+.header-nav-icons div {
+  display: flex;
 }
 
 .nav {
@@ -159,6 +165,15 @@ header {
 }
 
 .sign-in-icon-wrapper:hover {
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+
+.logout {
+  border-radius: 0.5em;
+  padding: 0 0.25em;
+}
+
+.logout:hover {
   box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
 }
 
@@ -236,6 +251,11 @@ header {
   background-color: var(--clr--container);
   /* padding: 0.5em 2.5em 0 0.25em; */
   width: 100%;
+}
+
+.shopping-cart-header div {
+  display: flex;
+  flex-direction: column;
 }
 
 .shopping-cart-header h2 {
@@ -336,6 +356,11 @@ header {
   border-radius: 50%;
   font-size: 0.8em;
   font-weight: bold;
+}
+
+.item-detail-wrapper {
+  display: flex;
+  flex-direction: column;
 }
 
 .item-detail {
@@ -680,10 +705,14 @@ footer {
     font-size: 1.5em;
   }
 
-  .header-nav-icons {
+  /* .header-nav-icons {
     flex-direction: column;
     align-items: end;
-  }
+  } */
+
+  /* .header-nav-icons div {
+    flex-direction: column;
+  } */
 
   .carousel-header {
     padding: 0.5em;
@@ -716,11 +745,11 @@ footer {
     left: 25%;
   } */
 
-  .cart-closed,
+  /* .cart-closed,
   .cart-open {
-    top: 45px;
+    top: 16px;
     right: 32px;
-  }
+  } */
 
   .cart {
     top: 72px;
@@ -728,7 +757,7 @@ footer {
   }
 
   .exit-before {
-    top: 50px;
+    top: 40px;
     right: 50px;
   }
 
@@ -737,10 +766,10 @@ footer {
     right: 25px;
   }
 
-  .cart-length {
-    top: 40px;
+  /* .cart-length {
+    top: 10px;
     right: 20px;
-  }
+  } */
 
   .categoryBtnList {
     justify-content: center;
