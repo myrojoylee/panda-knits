@@ -3,7 +3,7 @@ import PandaLogo from "../../assets/panda-knits-logo-v2.png";
 import LoginForm from "../LoginForm";
 import SignUpForm from "../SignUpForm";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUser } from "@fortawesome/free-solid-svg-icons";
+import { faUser, faCartShopping } from "@fortawesome/free-solid-svg-icons";
 import { Nav, Modal, Tab } from "react-bootstrap";
 import Cart from "../Cart";
 import CategoryNav from "../CategoryNav";
@@ -51,7 +51,10 @@ function Header() {
               </span>
             </Link>
           )}
-
+          <FontAwesomeIcon
+            icon={faCartShopping}
+            className="shopping-cart-stationary"
+          />
           <Cart />
         </section>
       </section>

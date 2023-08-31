@@ -106,13 +106,18 @@ const Cart = () => {
           />
         </span>
       </div>
-      <div className="close" onClick={toggleCart}>
+      {/* <div className="close" onClick={toggleCart}>
         <FontAwesomeIcon icon={faCircleXmark} className="exit-before" />
-      </div>
+      </div> */}
       <div className="shopping-cart-wrapper">
         <div className="shopping-cart-header">
-          <h2>Shopping Cart</h2>
-          <h3>({state.cart.length} items)</h3>
+          <div>
+            <h2>Shopping Cart</h2>
+            <h3>({state.cart.length} items)</h3>
+          </div>
+          <div className="close" onClick={toggleCart}>
+            <FontAwesomeIcon icon={faCircleXmark} className="exit-before" />
+          </div>
         </div>
 
         {state.cart.length ? (
