@@ -50,13 +50,15 @@ function ProductItem(item) {
           <h5 className="product-card-heading">{name}</h5>
           {/* <p>{personal[0]?.data}</p> */}
         </Link>
-        <div className="product-card-stats">
-          {/* {quantity} {pluralize("item", quantity)} in stock */}
-          <p>${price}</p>
+        <div className="action">
+          <div className="product-card-stats">
+            {/* {quantity} {pluralize("item", quantity)} in stock */}
+            <p>${price}</p>
+          </div>
+          <button className="addCartBtn" onClick={addToCart}>
+            Add to cart
+          </button>
         </div>
-        <button className="addCartBtn" onClick={addToCart}>
-          Add to cart
-        </button>
       </div>
     </div>
   );

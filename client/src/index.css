@@ -14,7 +14,7 @@
   --clr--container: rgb(232, 232, 232);
   --clr--container--hover: rgb(216, 213, 213);
   --clr--carousel--brown: rgba(101, 34, 25, 0.7);
-  --clr--carousel--beige: rgba(205, 149, 118, 0.7);
+  --clr--carousel--beige: rgba(210, 94, 94, 0.7);
   --clr--carousel--cream: rgba(252, 226, 202, 0.75);
   --clr--body: rgba(252, 207, 205, 0.62);
   --ff--logo: "Bebas Neue", sans-serif;
@@ -110,7 +110,7 @@ header {
   padding: 0;
 
   background-color: var(--clr--container);
-  padding: 0em 2em 0em 2em;
+  padding: 0em 2em 0.5em 2em;
 }
 
 .navbar-nav {
@@ -496,6 +496,7 @@ header {
 }
 
 .product-card-image img {
+  background-color: rgb(243, 240, 240);
   object-fit: cover;
   object-position: top;
 }
@@ -762,8 +763,21 @@ footer {
     margin-top: 1.5em;
   }
 
+  .action {
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+  }
+
+  .addCartBtn {
+    padding: 0;
+  }
   .product-card-list {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .product-card {
+    height: 350px;
   }
 
   .detail-body {
