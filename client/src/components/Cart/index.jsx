@@ -35,6 +35,8 @@ const Cart = () => {
       // checkout page since we are not set up
       // for production and payments are off
       window.location = `https://panda-knits-847b929e7885.herokuapp.com/sampleCheckout`;
+
+      // uncomment below when ready for payments to be activated
       // window.location = data.checkout.sessionurl;
     }
   }, [data]);
@@ -63,6 +65,9 @@ const Cart = () => {
     return sum.toFixed(2);
   }
 
+  // note that this function will be used when stripe is in production mode
+  // and payment functionality is active.
+  // for now, the checkout page leads to a "sample checkout"
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
@@ -135,10 +140,12 @@ const Cart = () => {
               <p className="checkout-total">Subtotal: ${calculateTotal()}</p>
 
               {Auth.loggedIn() ? (
-                // goes to sample checkout page as we are not in production
-                <Link to="/sampleCheckout">Checkout</Link>
+                <>
+                  {/* goes to sample checkout page as we are not in production */}
+                  <Link to="/sampleCheckout">Checkout</Link>
+                  {/* <button onClick={handleSubmit}>Checkout</button> */}
+                </>
               ) : (
-                // <button onClick={handleSubmit}>Checkout</button>
                 <Link
                   onClick={() => setShowModal(true)}
                   className="checkout-login-text"
