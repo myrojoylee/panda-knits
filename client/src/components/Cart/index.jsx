@@ -31,7 +31,11 @@ const Cart = () => {
 
   useEffect(() => {
     if (data) {
-      window.location = data.checkout.sessionurl;
+      // the following is a link to the sample
+      // checkout page since we are not set up
+      // for production and payments are off
+      window.location = `https://panda-knits-847b929e7885.herokuapp.com/sampleCheckout`;
+      // window.location = data.checkout.sessionurl;
     }
   }, [data]);
 

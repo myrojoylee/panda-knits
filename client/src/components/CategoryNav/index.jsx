@@ -47,7 +47,6 @@ function CategoryNav() {
   return (
     <>
       <Navbar expand="md">
-        {/* <Navbar.Brand href="#">Navbar Offcanvas</Navbar.Brand> */}
         <Navbar.Toggle aria-controls="offcanvasNavbar-expand-md" />
         <Navbar.Offcanvas
           id="offcanvasNavbar-expand-md"
@@ -80,7 +79,6 @@ function CategoryNav() {
               >
                 All
               </button>
-              {/* <Link to="/myOrders">My Orders</Link> */}
             </Nav>
           </Offcanvas.Body>
         </Navbar.Offcanvas>

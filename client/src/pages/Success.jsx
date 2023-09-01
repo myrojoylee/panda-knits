@@ -14,32 +14,14 @@ function Success() {
     variables: { id: orderNumber },
   });
   console.log(data);
-  // useEffect(() => {
-  //   async function saveOrder() {
-  //     const cart = await idbPromise("cart", "get");
-  //     const products = cart.map((item) => item._id);
-
-  //     if (products.length) {
-  //       const { data } = await addOrder({ variables: { products } });
-  //       const productData = data.addOrder.products;
-
-  //       productData.forEach((item) => {
-  //         idbPromise("cart", "delete", item);
-  //       });
-  //     }
-
-  //     setTimeout(() => {
-  //       window.location.assign("/");
-  //     }, 3000);
-  //   }
-
-  //   saveOrder();
-  // }, [addOrder]);
 
   return (
     <>
       {loading ? (
-        <></>
+        <>
+          <h2>An error has occurred.</h2>
+          <h3>Please navigate back to the homepage</h3>
+        </>
       ) : (
         <div>
           <Jumbotron>

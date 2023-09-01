@@ -51,18 +51,20 @@ function Header() {
             </>
           ) : (
             <>
-              <Link
-                className="sign-in-icon-wrapper"
-                onClick={() => setShowModal(true)}
-              >
-                <span role="img" aria-label="signup">
-                  <FontAwesomeIcon icon={faUser} className="sign-in-icon" />
-                </span>
-              </Link>
-              <FontAwesomeIcon
-                icon={faCartShopping}
-                className="shopping-cart-stationary"
-              />
+              <div>
+                <Link
+                  className="sign-in-icon-wrapper"
+                  onClick={() => setShowModal(true)}
+                >
+                  <span role="img" aria-label="signup">
+                    <FontAwesomeIcon icon={faUser} className="sign-in-icon" />
+                  </span>
+                </Link>
+                <FontAwesomeIcon
+                  icon={faCartShopping}
+                  className="shopping-cart-stationary"
+                />
+              </div>
             </>
           )}
           {/* <FontAwesomeIcon

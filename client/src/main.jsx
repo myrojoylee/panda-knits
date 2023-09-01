@@ -15,6 +15,7 @@ import Success from "./pages/Success";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./index.css";
+import SampleCheckout from "./pages/SampleCheckout.jsx";
 
 const router = createBrowserRouter([
   {
@@ -41,6 +42,10 @@ const router = createBrowserRouter([
       {
         path: "/products/:id",
         element: <Detail />,
+      },
+      {
+        path: "/sampleCheckout",
+        element: <SampleCheckout />,
       },
     ],
   },
