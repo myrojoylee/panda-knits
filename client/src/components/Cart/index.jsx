@@ -135,8 +135,10 @@ const Cart = () => {
               <p className="checkout-total">Subtotal: ${calculateTotal()}</p>
 
               {Auth.loggedIn() ? (
-                <button onClick={handleSubmit}>Checkout</button>
+                // goes to sample checkout page as we are not in production
+                <Link to="/sampleCheckout">Checkout</Link>
               ) : (
+                // <button onClick={handleSubmit}>Checkout</button>
                 <Link
                   onClick={() => setShowModal(true)}
                   className="checkout-login-text"
