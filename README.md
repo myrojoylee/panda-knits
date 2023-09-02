@@ -2,7 +2,7 @@
 
 ## Description
 
-Winter is coming! Wrap yourself up in these homemade knits! In order to create this application, we implemented the four technologies of the MERN stack: MongoDB, Express, React, and Node for fullstack functionality.
+Winter is coming! Wrap yourself up in these homemade knits! In order to create this application, we implemented the four technologies of the MERN stack: MongoDB, Express, React, and Node for fullstack functionality. Additionally, Bootstrap was utilized for several UI features.
 
 ## Installation
 
@@ -30,6 +30,8 @@ The application deployed on Heroku can be found [here](https://panda-knits-847b9
 
 Below is a small demo animation showing basic functionality of this small e-commerce app:
 
+https://github.com/myrojoylee/panda-knits/assets/120980593/61ee7e48-6505-41fb-8910-28ab86575ab7
+
 ## Contribution Guidelines
 
 There are currently no requirements for contribution but pull requests are always welcome as well as an e-mail message (see below) to discuss what your ideas are.
@@ -41,6 +43,8 @@ Feel free reach out to me via [e-mail](mailto:myro.joy.olida.092282@gmail.com) f
 ## Acknowledgments
 
 Thank you to the instructional team for their help on all aspects of this project!
+
+Code for navigation bar hover effects sourced from [Sarath AR's Codepen](https://codepen.io/sarath-ar/pen/MveqXe).
 
 ## License
 
