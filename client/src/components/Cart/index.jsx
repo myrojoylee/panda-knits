@@ -142,7 +142,9 @@ const Cart = () => {
               {Auth.loggedIn() ? (
                 <>
                   {/* goes to sample checkout page as we are not in production */}
-                  <Link to="/sampleCheckout">Checkout</Link>
+                  <Link to="/sampleCheckout" className="checkout-login-text">
+                    Checkout
+                  </Link>
                   {/* <button onClick={handleSubmit}>Checkout</button> */}
                 </>
               ) : (

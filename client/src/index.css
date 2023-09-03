@@ -305,6 +305,7 @@ header {
 
 .cart {
   position: fixed;
+  /* overflow-y: hidden; */
   top: 42px;
   right: 52px;
   border: 1px solid var(--clr--container--hover);
@@ -583,10 +584,10 @@ header {
   object-position: top;
 }
 
-.product-card-image img:hover {
+/* .product-card-image img:hover {
   object-fit: cover;
   object-position: center;
-}
+} */
 
 .product-card-detail {
   display: flex;
