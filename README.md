@@ -8,6 +8,8 @@ Winter is coming! Wrap yourself up in these homemade knits! In order to create t
 
 - This is a [Node.js](https://nodejs.org/en) application. It is recommended to use at least v16 (up to v18) for this app to run correctly.
 
+- MongoDB is required for this app to run, so follow directions outlined [here](https://coding-boot-camp.github.io/full-stack/mongodb/how-to-install-mongodb) for a step-by-step guide depending on your operating system.
+
 ### Dependencies
 
 - Type the following in your terminal in the root directory to install all dependencies:
