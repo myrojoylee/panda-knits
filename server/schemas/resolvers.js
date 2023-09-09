@@ -23,7 +23,6 @@ const resolvers = {
         };
       }
       const products = await Product.find(params).populate("category");
-      console.log(products);
       return products;
     },
     product: async (parent, { _id }) => {
@@ -91,8 +90,6 @@ const resolvers = {
     },
 
     checkout: async (parent, args, context) => {
-      console.log(args);
-      console.log("hello");
       const url = process.env.DOMAIN;
       let order = null;
       try {
@@ -107,9 +104,6 @@ const resolvers = {
       }
 
       try {
-        console.log("do we get here");
-        console.log(order);
-
         let line_items = [];
 
         line_items = args.products.map((product) => {
@@ -126,7 +120,6 @@ const resolvers = {
           };
         });
 
-        console.log(line_items);
         const session = await stripe.checkout.sessions.create({
           payment_method_types: ["card"],
           line_items,
@@ -134,7 +127,7 @@ const resolvers = {
           success_url: `${url}/success?orderNumber=${order._id}`,
           cancel_url: `${url}`,
         });
-        console.log(session);
+
         return { sessionurl: session.url };
       } catch (e) {
         console.error(e);

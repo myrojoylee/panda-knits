@@ -24,11 +24,13 @@ Winter is coming! Wrap yourself up in these homemade knits! In order to create t
 
 - [Nodemon](https://nodemon.io/) to enable automatic restarting of your server upon any detected changes.
 
+## Additional Considerations
+
+[Stripe payment](https://stripe.com/docs/development) was in test mode during development. It has not been activated for production so a sample checkout page was provided instead when you click on 'check out' in the deployed version.
+
 ## Usage
 
 The application deployed on Heroku can be found [here](https://panda-knits-847b929e7885.herokuapp.com/).
-
-[Stripe payment](https://stripe.com/docs/development) was in test mode during development. It has not been activated for production so a sample checkout page was provided instead when you click on 'check out' in the deployed version.
 
 Below is a small demo animation showing basic functionality of this small e-commerce app:
 

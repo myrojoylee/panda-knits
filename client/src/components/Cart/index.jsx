@@ -58,7 +58,6 @@ const Cart = () => {
 
   function calculateTotal() {
     let sum = 0;
-    console.log(state.cart);
     state.cart.forEach((item) => {
       sum += item.price * item.purchaseQuantity;
     });
@@ -83,8 +82,6 @@ const Cart = () => {
           ],
         },
       });
-
-      console.log(data);
     } catch (err) {
       console.error(err);
     }

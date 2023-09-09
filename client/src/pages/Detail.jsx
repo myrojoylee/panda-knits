@@ -26,7 +26,6 @@ function Detail() {
   const { products, cart } = state;
 
   const handleChange = (event) => {
-    console.log(event.target.value);
     setPersonalName(event.target.value);
   };
 
@@ -89,7 +88,6 @@ function Detail() {
         ],
       });
     }
-    console.log(cart);
   };
 
   const removeFromCart = () => {

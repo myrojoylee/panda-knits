@@ -13,7 +13,6 @@ function Success() {
   const { loading, data } = useQuery(QUERY_SINGLE_ORDER, {
     variables: { id: orderNumber },
   });
-  console.log(data);
 
   return (
     <>

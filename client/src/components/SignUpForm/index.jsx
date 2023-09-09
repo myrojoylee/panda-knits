@@ -23,12 +23,10 @@ const SignupForm = () => {
   const handleInputChange = (event) => {
     const { name, value } = event.target;
     setUserFormData({ ...userFormData, [name]: value });
-    console.log(userFormData);
   };
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-    console.log(userFormData);
 
     try {
       const { data } = await addUser({
